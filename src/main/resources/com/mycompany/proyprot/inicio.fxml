@@ -25,24 +25,25 @@
             <Label alignment="CENTER" prefHeight="51.0" prefWidth="204.0" style="-fx-background-color: #AED6F1;" text="Usuario" textAlignment="CENTER">
                <font>
                   <Font size="20.0" />
-               </font></Label>
-            <TextField fx:id="user" prefHeight="69.0" prefWidth="231.0" GridPane.columnIndex="1" />
+               </font>
+            </Label>
             <Label alignment="CENTER" prefHeight="48.0" prefWidth="204.0" style="-fx-background-color: #AED6F1;" text="Contraseña" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="204.0" text="Iniciar" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
+            <Label fx:id="correcto" alignment="CENTER" prefHeight="44.0" prefWidth="207.0" text="hola" textFill="#ff5656" GridPane.rowIndex="2" />
+            <TextField fx:id="user" prefHeight="69.0" prefWidth="231.0" GridPane.columnIndex="1" />
             <PasswordField fx:id="password" prefHeight="48.0" prefWidth="204.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
             </PasswordField>
-            <Label alignment="CENTER" prefHeight="44.0" prefWidth="207.0" text="hola" textFill="#ff5656" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="204.0" text="Iniciar" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
          </children>
       </GridPane>
       <Button layoutX="235.0" layoutY="308.0" mnemonicParsing="false" onAction="#switchToregistro" prefHeight="44.0" prefWidth="130.0" text="Registrarse">

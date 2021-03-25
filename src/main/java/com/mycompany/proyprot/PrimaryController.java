@@ -7,6 +7,6 @@ public class PrimaryController {
 
     @FXML
     private void switchToregistro() throws IOException {
-        App.setRoot("registro");
+        App.setRoot("registros");
     }
 }
