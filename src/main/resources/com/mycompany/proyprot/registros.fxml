@@ -24,22 +24,22 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" prefHeight="43.0" prefWidth="163.0" style="-fx-background-color: #AED6F1;" text="Usuario">
+            <Label alignment="CENTER" prefHeight="42.0" prefWidth="157.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="Usuario">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="43.0" prefWidth="162.0" style="-fx-background-color: #AED6F1;" text="Email" GridPane.rowIndex="1">
+            <Label alignment="CENTER" prefHeight="47.0" prefWidth="157.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="Email" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="43.0" prefWidth="157.0" style="-fx-background-color: #AED6F1;" text="Contraseña" GridPane.rowIndex="2">
+            <Label alignment="CENTER" prefHeight="43.0" prefWidth="157.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="Contraseña" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="43.0" prefWidth="157.0" style="-fx-background-color: #AED6F1;" text="Repite la contraseña" GridPane.rowIndex="3">
+            <Label alignment="CENTER" prefHeight="45.0" prefWidth="157.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="Repite la contraseña" GridPane.rowIndex="3">
                <font>
                   <Font size="17.0" />
                </font>
@@ -47,7 +47,7 @@
             <TextField fx:id="newuser" prefHeight="46.0" prefWidth="160.0" GridPane.columnIndex="1" />
             <TextField fx:id="email" prefHeight="49.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="newpassword" prefHeight="45.0" prefWidth="157.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="repeatpassword" prefHeight="43.0" prefWidth="157.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="repeatpassword" prefHeight="47.0" prefWidth="156.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="156.0" text="Registrarse" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font size="20.0" />
@@ -55,7 +55,7 @@
             </Button>
          </children>
       </GridPane>
-      <Label fx:id="registrobn" alignment="CENTER" layoutX="205.0" layoutY="280.0" prefHeight="26.0" prefWidth="190.0" text="Label" textFill="#ff7373" />
+      <Label fx:id="registrobn" alignment="CENTER" layoutY="280.0" prefHeight="27.0" prefWidth="600.0" text="el registro es erroneo" textFill="#ff7373" />
       <Button layoutX="231.0" layoutY="326.0" mnemonicParsing="false" onAction="#switchToinicio" prefHeight="43.0" prefWidth="139.0" text="Volver al login">
          <font>
             <Font size="18.0" />
