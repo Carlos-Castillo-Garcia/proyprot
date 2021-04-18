@@ -46,8 +46,8 @@
             </Label>
             <TextField fx:id="newuser" prefHeight="46.0" prefWidth="160.0" GridPane.columnIndex="1" />
             <TextField fx:id="email" prefHeight="49.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="newpassword" prefHeight="45.0" prefWidth="157.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="repeatpassword" prefHeight="47.0" prefWidth="156.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <PasswordField fx:id="pass1" prefHeight="49.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <PasswordField fx:id="pass2" prefHeight="49.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Button mnemonicParsing="false" onAction="#registrarse" prefHeight="52.0" prefWidth="156.0" style="-fx-border-color: #34495E;" text="Registrarse" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font size="20.0" />
