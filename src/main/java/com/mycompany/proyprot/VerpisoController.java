@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author Ismael m
  */
-public class JuegoController{
+public class VerpisoController{
 
     /**
      * Initializes the controller class.

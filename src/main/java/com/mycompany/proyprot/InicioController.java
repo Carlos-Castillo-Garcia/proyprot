@@ -16,7 +16,6 @@ public class InicioController {
     private void switchTomenu() throws IOException{
         TextField user;
         TextField Password;
-        
-        //Label correcto = " ";
+        Label correcto;
     }
 }
