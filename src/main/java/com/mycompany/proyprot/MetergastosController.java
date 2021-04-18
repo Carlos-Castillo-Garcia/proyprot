@@ -5,20 +5,23 @@
  */
 package com.mycompany.proyprot;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
  * FXML Controller class
  *
- * @author CARLOS
+ * @author Usuario
  */
-public class GastosController{
-    @FXML
-    private void backgasto() throws IOException{
-        App.setRoot("menu");
-    }
+public class MetergastosController implements Initializable {
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
+    
 }

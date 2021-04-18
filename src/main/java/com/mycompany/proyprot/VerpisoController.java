@@ -5,21 +5,19 @@
  */
 package com.mycompany.proyprot;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
  * FXML Controller class
  *
- * @author CARLOS
+ * @author Ismael m
  */
-public class NewpisoController{
+public class VerpisoController{
 
-   @FXML
-    private void backnewpiso() throws IOException{
-        App.setRoot("menu");
-    }
+    /**
+     * Initializes the controller class.
+     */   
+    
 }
