@@ -1,11 +1,9 @@
 package com.mycompany.proyprot;
 
-import com.mycompany.DAO.ConnDAO;
 import com.mycompany.DAO.UserDAO;
 import com.mycompany.models.Users;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
@@ -23,7 +21,6 @@ public class RegistrosController {
     @FXML
     private PasswordField pass2;
     
-    private static ConnDAO con;
     private static UserDAO user;
     
     @FXML
@@ -32,7 +29,7 @@ public class RegistrosController {
     }
     @FXML
     private void registrarse() throws IOException, SQLException{
-            con = new ConnDAO();
+            user = new UserDAO();
             Users reguser = new Users();
             boolean compuser = false;
             boolean compemail = false;
@@ -44,26 +41,33 @@ public class RegistrosController {
                 }
                 if(compuser == true){
                     if(reguser.Compemail(email.getText())){
-                        comppass = true;
+                        compemail = true;
                     }else{
-                        comppass = false;
+                        compemail = false;
                     }
                 }                
-                if(compuser == true && comppass == true){
+                if(compuser == true && compemail == true){
                     if(reguser.Compcontrasena(pass1.getText())){
+                        if(pass2.getText().equals(pass1.getText())){
                             comppass = true;
+                        }else{
+                            comppass = false;
+                        }  
                     }else{
                         comppass = false;
                     }
                 }
                 if(compuser == true && comppass == true && compemail == true) {
-                    try {
-                        reguser = new Users(newuser.getText(), email.getText(), pass1.getText());
-                        con.conectar();
-                        user.insertar(reguser);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(RegistrosController.class.getName()).log(Level.SEVERE, null, ex);
-                    }  
+                try {
+                    reguser = new Users(newuser.getText(), pass1.getText(), email.getText());
+                    user.conectar();
+                    user.insertar(reguser);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(RegistrosController.class.getName()).log(Level.SEVERE, null, ex);
+                }finally{
+                    user.desconexion();
+                }
+                      
                 }
     }
 }

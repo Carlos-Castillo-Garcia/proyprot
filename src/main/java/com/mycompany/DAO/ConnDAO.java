@@ -17,7 +17,7 @@ import java.sql.SQLException;
  */
 public class ConnDAO {
     private Connection conexion;
-    
+
     public void conectar() throws ClassNotFoundException, SQLException, IOException {
         String host = "LocalHost";
         String port = "3306";

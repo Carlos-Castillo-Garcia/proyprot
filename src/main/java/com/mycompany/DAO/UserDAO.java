@@ -8,6 +8,7 @@ package com.mycompany.DAO;
 import com.mycompany.models.Users;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +20,23 @@ import java.util.ArrayList;
  */
 public class UserDAO {
     private Connection conexion;
+
+    public void conectar() throws ClassNotFoundException, SQLException, IOException {
+        String host = "LocalHost";
+        String port = "3306";
+        String dbname = "casa_expres";
+        String username = "root";
+        String password = "123456";
+        
+        conexion = DriverManager.getConnection("jdbc:mariadb://"+
+                                                host + ":" + port + "/" + dbname
+                + "?serverTimezone=UTC",username,password);
+        
+    }
+    
+    public void desconexion () throws SQLException{
+        conexion.close();
+    }
     
     public void insertar(Users user) throws SQLException, ClassNotFoundException, IOException{
         String sql = "INSERT INTO casa_expres.user (username, password, email) VALUES (?,?,?)";
@@ -36,9 +54,9 @@ public class UserDAO {
 //        PreparedStatement sentencia = conexion.prepareStatement(sql);
 //        /*hacer login con un select filtrando por el email*/
 //    }
-    public ArrayList<Users> compusers() throws SQLException {
+    public ArrayList<Users> username() throws SQLException {
         ArrayList<Users> usuarios = new ArrayList<>();
-        String sql = "SELECT * FROM user";
+        String sql = "SELECT username FROM user";
         
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         ResultSet resultado = sentencia.executeQuery();
@@ -46,10 +64,15 @@ public class UserDAO {
         while(resultado.next()){
             Users a = new Users();
             a.setNombre(resultado.getString(1));
-            a.setEmail(resultado.getString(2));
-            a.setContrasena(resultado.getString(3));
             usuarios.add(a);
         }
         return usuarios;
+    }    
+    public void borrar(Users user) throws SQLException, ClassNotFoundException, IOException{
+        String sql = "DELETE FROM actor WHERE nombre = ?";
+        
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(1, user.getNombre());
+        sentencia.execute();
     }
 }
