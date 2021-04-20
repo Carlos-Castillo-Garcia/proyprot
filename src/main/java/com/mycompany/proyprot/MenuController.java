@@ -5,15 +5,41 @@
  */
 package com.mycompany.proyprot;
 
+import java.io.IOException;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 
 
-public class MenuController extends LoginController{
-    @FXML
-    private Label usuariologeado;
-    
-    private void prueba(){
-        usuariologeado.setText("EL ususario");
+
+/**
+ * FXML Controller class
+ *
+ * @author Usuario
+ */
+public class MenuController{
+
+   @FXML
+    private void switchTometerpiso() throws IOException {
+        App.setRoot("meterpiso");
     }
+    
+    @FXML
+    private void switchToverpisos() throws IOException {
+        App.setRoot("verpisos");
+    }
+    
+    @FXML
+    private void switchTomodificarpiso() throws IOException {
+        App.setRoot("modificarpiso");
+    }
+    
+    @FXML
+    private void switchTometergastos() throws IOException {
+        App.setRoot("metergastos");
+    }
+    
+    @FXML
+    private void switchTogastostotal() throws IOException {
+        App.setRoot("gastostotal");
+    }
+    
 }
