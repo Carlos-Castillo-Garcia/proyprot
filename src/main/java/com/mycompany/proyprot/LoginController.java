@@ -25,7 +25,7 @@ public class LoginController {
         boolean comppass = u.Compcontrasena(pass);
         if(comp){
            if(comppass){
-               App.setRoot("menu");
+               App.setRoot("menuprot");
            }else{
                resultado.setText("Login incorrecto");
            }
