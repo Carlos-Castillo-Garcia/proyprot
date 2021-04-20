@@ -33,16 +33,17 @@ public class InicioController {
             compuser.conectar();
             ArrayList <Users> users = new ArrayList(compuser.username());
             for(int i = 0; i <= users.size();i++){
-                if(user.getText().equals(users.get(0))){
-                    tokenuser = true;
-                    if(password.getText().equals(users.get(1))){
-                        tokenpass = true;
+                if(user.getText().equals(users.get(i).getNombre())){
+//                    tokenuser = true;
+                    if(password.getText().equals(users.get(i).getContrasena())){
+//                        tokenpass = true;
+                        App.setRoot("menu");
                     }
                 }
             }
-            if(tokenuser == true && tokenpass == true){
-                App.setRoot("menu");
-            }
+//            if(tokenuser == true && tokenpass == true){
+//                App.setRoot("menu");
+//            }
         } catch (SQLException ex) {
             Logger.getLogger(InicioController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -21,6 +21,11 @@ public class Users {
         this.email = email;
     }
 
+    public Users(String nombre, String contrasena) {
+        this.nombre = nombre;
+        this.contrasena = contrasena;
+    }
+
     /**
      * @return the nombre
      */

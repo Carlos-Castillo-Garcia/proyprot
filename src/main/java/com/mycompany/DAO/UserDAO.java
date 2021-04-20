@@ -56,7 +56,7 @@ public class UserDAO {
 //    }
     public ArrayList<Users> username() throws SQLException {
         ArrayList<Users> usuarios = new ArrayList<>();
-        String sql = "SELECT username FROM user";
+        String sql = "SELECT username, password FROM user";
         
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         ResultSet resultado = sentencia.executeQuery();
