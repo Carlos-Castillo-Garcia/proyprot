@@ -16,9 +16,9 @@ import java.sql.SQLException;
  * @author PORTATIL 2
  */
 public class ConnDAO {
-    private Connection conexion;
-
-    public void conectar() throws ClassNotFoundException, SQLException, IOException {
+    
+    public static Connection conectar() throws ClassNotFoundException, SQLException, IOException {
+        Connection conexion;
         String host = "LocalHost";
         String port = "3306";
         String dbname = "casa_expres";
@@ -29,9 +29,10 @@ public class ConnDAO {
                                                 host + ":" + port + "/" + dbname
                 + "?serverTimezone=UTC",username,password);
         
+        return conexion;
     }
     
-    public void desconexion () throws SQLException{
+    public static void desconexion (Connection conexion) throws SQLException{
         conexion.close();
     }
 }

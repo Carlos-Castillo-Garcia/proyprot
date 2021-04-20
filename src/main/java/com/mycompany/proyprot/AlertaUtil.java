@@ -18,4 +18,31 @@ public class AlertaUtil {
         alerta.setContentText(mensaje);
         alerta.show();
     }
+
+    public static void mostrarAlertInfo(String mensaje) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setContentText(mensaje);
+        alerta.show();
+    }
+
+
+    public static void mostrarAlertWarning(String mensaje) {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+        alerta.setContentText(mensaje);
+        alerta.show();
+    }
+
+
+    public static void mostrarAlertConfirmation(String mensaje) {
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        alerta.setContentText(mensaje);
+        alerta.show();
+    }
+
+
+    public static void mostrarAlertCabecera(String mensaje) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setContentText(mensaje);
+        alerta.show();
+    }
 }

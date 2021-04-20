@@ -1,8 +1,10 @@
 package com.mycompany.proyprot;
 
+import com.mycompany.DAO.ConnDAO;
 import com.mycompany.DAO.UserDAO;
 import com.mycompany.models.Users;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +24,7 @@ public class RegistrosController {
     private PasswordField pass2;
     
     private static UserDAO user;
+    private static Connection con;
     
     @FXML
     private void switchToinicio() throws IOException {
@@ -30,6 +33,11 @@ public class RegistrosController {
     @FXML
     private void registrarse() throws IOException, SQLException{
             user = new UserDAO();
+            try {
+                con = ConnDAO.conectar();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(RegistrosController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             Users reguser = new Users();
             boolean compuser = false;
             boolean compemail = false;
@@ -60,12 +68,11 @@ public class RegistrosController {
                 if(compuser == true && comppass == true && compemail == true) {
                 try {
                     reguser = new Users(newuser.getText(), pass1.getText(), email.getText());
-                    user.conectar();
-                    user.insertar(reguser);
+                    user.insertar(reguser,con);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(RegistrosController.class.getName()).log(Level.SEVERE, null, ex);
                 }finally{
-                    user.desconexion();
+                    ConnDAO.desconexion(con);
                 }
                       
                 }

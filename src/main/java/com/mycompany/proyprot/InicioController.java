@@ -1,6 +1,7 @@
 package com.mycompany.proyprot;
 
 import com.mycompany.DAO.UserDAO;
+import com.mycompany.DAO.ConnDAO;
 import com.mycompany.models.Users;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,7 +22,7 @@ public class InicioController {
     
     @FXML
     private void switchToregistro() throws IOException {
-        
+        App.setRoot("registros");
     }
     
     @FXML
@@ -30,20 +31,19 @@ public class InicioController {
         boolean tokenpass = false;
         try {
             compuser = new UserDAO();
-            compuser.conectar();
-            ArrayList <Users> users = new ArrayList(compuser.username());
+            ArrayList <Users> users = new ArrayList(compuser.username(ConnDAO.conectar()));
             for(int i = 0; i <= users.size();i++){
                 if(user.getText().equals(users.get(i).getNombre())){
-//                    tokenuser = true;
+                    tokenuser = true;
                     if(password.getText().equals(users.get(i).getContrasena())){
-//                        tokenpass = true;
+                        tokenpass = true;
                         App.setRoot("menu");
                     }
                 }
             }
-//            if(tokenuser == true && tokenpass == true){
-//                App.setRoot("menu");
-//            }
+            if(tokenuser == false || tokenpass == false){
+                AlertaUtil.mostrarError("Los datos son erroneos");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(InicioController.class.getName()).log(Level.SEVERE, null, ex);
         }
