@@ -38,8 +38,8 @@ public class App extends Application {
     }
     
     static void setUsuario(Users u) {       
-        user = u;
-
+        user.setNombre(u.getNombre());
+        user.setId(u.getId());
     }
 
 }

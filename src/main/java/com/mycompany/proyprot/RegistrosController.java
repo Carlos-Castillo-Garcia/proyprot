@@ -46,12 +46,14 @@ public class RegistrosController {
                       compuser = true;
                 }else{
                     compuser = false;
+                     AlertaUtil.mostrarWarning("El usuario no cumple las caracteristicas");
                 }
                 if(compuser == true){
                     if(reguser.Compemail(email.getText())){
                         compemail = true;
                     }else{
                         compemail = false;
+                        AlertaUtil.mostrarWarning("El email no cumple las caracteristicas");
                     }
                 }                
                 if(compuser == true && compemail == true){
@@ -60,15 +62,18 @@ public class RegistrosController {
                             comppass = true;
                         }else{
                             comppass = false;
+                            AlertaUtil.mostrarWarning("Las contraseñas no son iguales");
                         }  
                     }else{
                         comppass = false;
+                        AlertaUtil.mostrarWarning("La contraseña no cumple las caracteristicas");
                     }
                 }
                 if(compuser == true && comppass == true && compemail == true) {
                 try {
                     reguser = new Users(newuser.getText(), pass1.getText(), email.getText());
                     user.insertar(reguser,con);
+                    AlertaUtil.mostrarInfo("Usuario registrado");
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(RegistrosController.class.getName()).log(Level.SEVERE, null, ex);
                 }finally{

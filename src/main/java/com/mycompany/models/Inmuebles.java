@@ -16,18 +16,16 @@ public class Inmuebles extends Casa {
     private int precio_compra;
     private int n_inquilinos;
     private Date fecha_compra;
-    private Date fecha_alquiler;
 
     public Inmuebles() {
     }
 
-    public Inmuebles(int n_habitaciones, int precio_compra, int n_inquilinos, Date fecha_compra, Date fecha_alquiler, String calle, int M_cuadrados) {
+    public Inmuebles(int n_habitaciones, int precio_compra, int n_inquilinos, Date fecha_compra, String calle, int M_cuadrados) {
         super(calle, M_cuadrados);
         this.n_habitaciones = n_habitaciones;
         this.precio_compra = precio_compra;
         this.n_inquilinos = n_inquilinos;
         this.fecha_compra = fecha_compra;
-        this.fecha_alquiler = fecha_alquiler;
     }
 
     public int getN_habitaciones() {
@@ -46,10 +44,6 @@ public class Inmuebles extends Casa {
         return fecha_compra;
     }
 
-    public Date getFecha_alquiler() {
-        return fecha_alquiler;
-    }
-
     public void setN_habitaciones(int n_habitaciones) {
         this.n_habitaciones = n_habitaciones;
     }
@@ -66,10 +60,6 @@ public class Inmuebles extends Casa {
         this.fecha_compra = fecha_compra;
     }
 
-    public void setFecha_alquiler(Date fecha_alquiler) {
-        this.fecha_alquiler = fecha_alquiler;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -77,7 +67,6 @@ public class Inmuebles extends Casa {
         sb.append(", precio_compra=").append(precio_compra);
         sb.append(", n_inquilinos=").append(n_inquilinos);
         sb.append(", fecha_compra=").append(fecha_compra);
-        sb.append(", fecha_alquiler=").append(fecha_alquiler);
         return sb.toString();
     }
     

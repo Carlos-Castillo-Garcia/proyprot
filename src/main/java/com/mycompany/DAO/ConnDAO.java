@@ -23,7 +23,10 @@ public class ConnDAO {
         String port = "3306";
         String dbname = "casa_expres";
         String username = "root";
-        String password = "123456";
+        String password = 
+                "123456"
+//              "Rowl3t1005"
+                ;
         
         conexion = DriverManager.getConnection("jdbc:mariadb://"+
                                                 host + ":" + port + "/" + dbname

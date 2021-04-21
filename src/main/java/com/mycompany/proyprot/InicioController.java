@@ -32,11 +32,12 @@ public class InicioController {
         try {
             compuser = new UserDAO();
             ArrayList <Users> users = new ArrayList(compuser.username(ConnDAO.conectar()));
-            for(int i = 0; i <= users.size();i++){
+            for(int i = 0; i < users.size();i++){
                 if(user.getText().equals(users.get(i).getNombre())){
                     tokenuser = true;
                     if(password.getText().equals(users.get(i).getContrasena())){
                         tokenpass = true;
+                        App.setUsuario(compuser.username(ConnDAO.conectar()));
                         App.setRoot("menu");
                     }
                 }

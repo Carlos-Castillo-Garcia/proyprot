@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * @author CARLOS
  */
 public class Users {
+    private int id;
     private String nombre;
     private String contrasena;
     private String email;
@@ -20,10 +21,9 @@ public class Users {
         this.contrasena = contrasena;
         this.email = email;
     }
-
-    public Users(String nombre, String contrasena) {
-        this.nombre = nombre;
-        this.contrasena = contrasena;
+    
+    public int getId() {
+        return id;
     }
 
     /**
@@ -68,6 +68,10 @@ public class Users {
         this.email = email;
     }
 
+     public void setId(int id) {
+        this.id = id;
+    }
+    
     @Override
     public String toString() {
         return "nombre" + nombre + "\n contrasena" + contrasena + "\n email" + email;
@@ -99,5 +103,6 @@ public class Users {
         }
         return comprobante;
     }
+
     
 }

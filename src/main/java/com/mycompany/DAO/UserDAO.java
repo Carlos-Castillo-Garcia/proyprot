@@ -30,23 +30,19 @@ public class UserDAO {
         sentencia.executeUpdate();
     }
     
-//    public void log(Users user) throws SQLException, ClassNotFoundException, IOException{
-//        String sql = "SELECT email, password FROM user WHERE email = ?";
-//        
-//        PreparedStatement sentencia = conexion.prepareStatement(sql);
-//        /*hacer login con un select filtrando por el email*/
-//    }
     public ArrayList<Users> username(Connection conexion) throws SQLException {
         ArrayList<Users> usuarios = new ArrayList<>();
-        String sql = "SELECT USERNAME, PASSWORD FROM user";
+        String sql = "SELECT * FROM user";
         
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         ResultSet resultado = sentencia.executeQuery();
         
         while(resultado.next()){
             Users a = new Users();
-            a.setNombre(resultado.getString(1));
-            a.setContrasena(resultado.getString(2));
+            a.setId(resultado.getInt(1));
+            a.setNombre(resultado.getString(2));
+            a.setContrasena(resultado.getString(3));
+            a.setEmail(resultado.getString(4));
             usuarios.add(a);
         }
         return usuarios;
