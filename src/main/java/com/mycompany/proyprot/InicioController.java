@@ -37,7 +37,7 @@ public class InicioController {
                     tokenuser = true;
                     if(password.getText().equals(users.get(i).getContrasena())){
                         tokenpass = true;
-                        App.setUsuario(compuser.username(ConnDAO.conectar()).get(i));
+                        App.setUsuario(users.get(i));
                         App.setRoot("menu");
                     }
                 }

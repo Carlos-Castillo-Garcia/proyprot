@@ -62,5 +62,6 @@
             </Button>
          </children>
       </GridPane>
+      <Label fx:id="labelusu" layoutX="103.0" layoutY="561.0" />
    </children>
 </AnchorPane>

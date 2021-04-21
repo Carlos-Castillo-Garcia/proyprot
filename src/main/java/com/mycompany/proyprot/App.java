@@ -15,7 +15,7 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
-    private static Users user = new Users();
+    public static Users user = new Users();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -38,8 +38,20 @@ public class App extends Application {
     }
     
     static void setUsuario(Users u) {       
-        user.setNombre(u.getNombre());
-        user.setId(u.getId());
+        user = u;
     }
+    
+    static void loadMeterPisoWindow() throws IOException {
+        String fxml = "meterpiso";
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+
+        // Give the controller access to the main app.
+        MeterpisoController controller = new MeterpisoController();
+        fxmlLoader.setController(controller);
+        
+        scene.setRoot(fxmlLoader.load());
+        controller.prueba();
+    }
+    
 
 }

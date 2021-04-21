@@ -5,20 +5,21 @@
  */
 package com.mycompany.proyprot;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import java.io.IOException;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
  *
  * @author Usuario
  */
-public class MeterpisoController implements Initializable {   
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+public class MeterpisoController {   
+    @FXML
+    private Label labelusu;
     
+    public void prueba() throws IOException{
+        labelusu.setText(App.user.getNombre());
+    }
+
 }

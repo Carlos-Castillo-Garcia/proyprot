@@ -5,8 +5,10 @@
  */
 package com.mycompany.proyprot;
 
+import com.mycompany.models.Users;
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 
 
@@ -16,10 +18,18 @@ import javafx.fxml.FXML;
  * @author Usuario
  */
 public class MenuController{
-
+    
+    @FXML
+    private Label labelid;
+    
+    @FXML
+    private Label labeluser;
+    
+    
    @FXML
     private void switchTometerpiso() throws IOException {
         App.setRoot("meterpiso");
+        App.loadMeterPisoWindow();
     }
     
     @FXML
@@ -42,4 +52,8 @@ public class MenuController{
         App.setRoot("gastostotal");
     }
     
+    public void prueba() throws IOException{
+        labelid.setText(String.valueOf(App.user.getId()));
+        labeluser.setText(App.user.getNombre());
+    }
 }
