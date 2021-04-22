@@ -7,25 +7,17 @@ package com.mycompany.proyprot;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-
 
 /**
  * FXML Controller class
  *
  * @author Usuario
  */
-public class MeterpisoController {   
-    @FXML
-    private Label labelusu;
+public class IngresostotalController {
     
     @FXML
     private void switchTomenu() throws IOException{
          App.setRoot("menu");
     }
     
-    public void prueba() throws IOException{
-        labelusu.setText(App.user.getNombre());
-    }
-
 }

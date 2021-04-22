@@ -5,23 +5,19 @@
  */
 package com.mycompany.proyprot;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import java.io.IOException;
+import javafx.fxml.FXML;
 
 /**
  * FXML Controller class
  *
  * @author Usuario
  */
-public class GastostotalController implements Initializable {
-
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+public class GastostotalController{    
+    
+    @FXML
+    private void switchTomenu() throws IOException{
+         App.setRoot("menu");
+    }
     
 }

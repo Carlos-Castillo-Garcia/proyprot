@@ -56,4 +56,10 @@ public class MenuController{
         labelid.setText(String.valueOf(App.user.getId()));
         labeluser.setText(App.user.getNombre());
     }
+
+    @FXML
+    private void switchToingresostotal() throws IOException {
+        App.setRoot("ingresostotal");
+    }
+    
 }
