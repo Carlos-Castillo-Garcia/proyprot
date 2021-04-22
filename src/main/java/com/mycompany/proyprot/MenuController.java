@@ -42,4 +42,9 @@ public class MenuController{
         App.setRoot("gastostotal");
     }
     
+    @FXML
+    private void switchToingresostotal() throws IOException {
+        App.setRoot("ingresostotal");
+    }
+    
 }

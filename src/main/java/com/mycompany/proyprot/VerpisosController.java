@@ -5,19 +5,19 @@
  */
 package com.mycompany.proyprot;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import java.io.IOException;
+import javafx.fxml.FXML;
 
 /**
  * FXML Controller class
  *
  * @author Ismael m
  */
-public class VerpisoController{
+public class VerpisosController{
 
-    /**
-     * Initializes the controller class.
-     */   
+    @FXML
+    private void switchTomenu() throws IOException{
+         App.setRoot("menu");
+    }
     
 }

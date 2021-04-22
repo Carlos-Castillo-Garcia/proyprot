@@ -13,8 +13,8 @@ import javafx.fxml.FXML;
  *
  * @author Usuario
  */
-public class MetergastosController{
-
+public class IngresostotalController {
+    
     @FXML
     private void switchTomenu() throws IOException{
          App.setRoot("menu");
