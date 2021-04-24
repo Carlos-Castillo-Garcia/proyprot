@@ -49,8 +49,8 @@
                   <TextField fx:id="habitaciones" prefHeight="105.0" prefWidth="344.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <TextField fx:id="precio_compra" prefHeight="105.0" prefWidth="344.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <TextField fx:id="precio_alquiler" prefHeight="105.0" prefWidth="344.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <DatePicker prefHeight="87.0" prefWidth="360.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="344.0" style="-fx-border-color: #34495E;" text="meter casa" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <DatePicker fx:id="fecha_compra" prefHeight="87.0" prefWidth="360.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Button mnemonicParsing="false" onAction="#ingreso_piso" prefHeight="97.0" prefWidth="344.0" style="-fx-border-color: #34495E;" text="meter casa" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <font>
                         <Font size="22.0" />
                      </font>

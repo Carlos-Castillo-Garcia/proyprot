@@ -5,9 +5,18 @@
  */
 package com.mycompany.proyprot;
 
+import com.mycompany.DAO.ConnDAO;
+import com.mycompany.DAO.InmuebleDAO;
+import com.mycompany.models.Inmuebles;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
 
 /**
@@ -17,15 +26,50 @@ import javafx.scene.control.Label;
  */
 public class MeterpisoController {   
     @FXML
-    private Label labelusu;
+    private TextField direcion;
+    @FXML
+    private TextField metros;
+    @FXML
+    private TextField habitaciones;
+    @FXML
+    private TextField precio_compra;
+    @FXML
+    private TextField precio_alquiler;
+    @FXML
+    private DatePicker fecha_compra;
+    
+    private static InmuebleDAO inmueble; 
+    private static Connection con;
     
     @FXML
     private void switchTomenu() throws IOException{
          App.setRoot("menu");
     }
-    
-    public void prueba() throws IOException{
-        labelusu.setText(App.user.getNombre());
+    @FXML
+    private void ingreso_piso() throws IOException, SQLException{
+        inmueble = new InmuebleDAO();
+        Inmuebles casa = new Inmuebles();
+        try {
+                con = ConnDAO.conectar();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(RegistrosController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        Date date = Date.valueOf(fecha_compra.getValue());
+        int habitaciones_value = Integer.parseInt(habitaciones.getText());
+        int metros_value = Integer.parseInt(metros.getText());
+        int precio_compra_value = Integer.parseInt(precio_compra.getText());
+        int precio_alquiler_value = Integer.parseInt(precio_alquiler.getText());
+        String direccion = direcion.getText();
+        try {
+            casa = new Inmuebles(habitaciones_value, precio_compra_value, precio_alquiler_value, -1, date);
+            inmueble.insert_piso(casa, direccion, metros_value, con);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MeterpisoController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MeterpisoController.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            ConnDAO.desconexion(con);
+        }
     }
 
 }

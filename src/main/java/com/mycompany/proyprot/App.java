@@ -50,7 +50,6 @@ public class App extends Application {
         fxmlLoader.setController(controller);
         
         scene.setRoot(fxmlLoader.load());
-        controller.prueba();
     }
     
 

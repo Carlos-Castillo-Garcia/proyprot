@@ -12,7 +12,7 @@ package com.mycompany.models;
 public abstract class Casa {
 
     private String calle;
-    private int M_cuadrados;
+    public int M_cuadrados;
 
     public Casa(String calle, int M_cuadrados) {
         this.calle = calle;
