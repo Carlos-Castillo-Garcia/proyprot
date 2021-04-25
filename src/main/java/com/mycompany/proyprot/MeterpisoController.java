@@ -60,9 +60,10 @@ public class MeterpisoController {
         int precio_compra_value = Integer.parseInt(precio_compra.getText());
         int precio_alquiler_value = Integer.parseInt(precio_alquiler.getText());
         String direccion = direcion.getText();
+        
         try {
-            casa = new Inmuebles(habitaciones_value, precio_compra_value, precio_alquiler_value, -1, date);
-            inmueble.insert_piso(casa, direccion, metros_value, con);
+            casa = new Inmuebles(-1, direccion, metros_value,habitaciones_value, precio_compra_value, precio_alquiler_value, -1, date);
+            inmueble.insert_piso(casa, con);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MeterpisoController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

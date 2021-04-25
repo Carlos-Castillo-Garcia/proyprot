@@ -8,6 +8,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * JavaFX App
@@ -50,6 +53,22 @@ public class App extends Application {
         fxmlLoader.setController(controller);
         
         scene.setRoot(fxmlLoader.load());
+    }
+    
+    static void loadModPisoWindow() throws IOException {
+        String fxml = "modificarpiso";
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+
+        // Give the controller access to the main app.
+        ModificarpisoController controller = new ModificarpisoController();
+        fxmlLoader.setController(controller);
+        
+        scene.setRoot(fxmlLoader.load());
+        try {
+            controller.desplegable();
+        } catch (SQLException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 

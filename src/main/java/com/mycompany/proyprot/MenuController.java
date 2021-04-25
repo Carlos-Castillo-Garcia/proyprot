@@ -40,6 +40,7 @@ public class MenuController{
     @FXML
     private void switchTomodificarpiso() throws IOException {
         App.setRoot("modificarpiso");
+        App.loadModPisoWindow();
     }
     
     @FXML

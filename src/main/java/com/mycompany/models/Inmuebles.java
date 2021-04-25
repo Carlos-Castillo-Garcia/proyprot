@@ -21,16 +21,8 @@ public class Inmuebles extends Casa {
     public Inmuebles() {
     }
 
-    public Inmuebles(String calle, int M_cuadrados, int n_habitaciones, int precio_compra, int precio_alquiler, int n_inquilinos, Date fecha_compra) {
-        super(calle, M_cuadrados);
-        this.n_habitaciones = n_habitaciones;
-        this.precio_compra = precio_compra;
-        this.precio_alquiler = precio_alquiler;
-        this.n_inquilinos = n_inquilinos;
-        this.fecha_compra = fecha_compra;
-    }
-
-    public Inmuebles(int n_habitaciones, int precio_compra, int precio_alquiler, int n_inquilinos, Date fecha_compra) {
+    public Inmuebles(int id_casa, String calle, int M_cuadrados, int n_habitaciones, int precio_compra, int precio_alquiler, int n_inquilinos, Date fecha_compra) {
+        super(id_casa, calle, M_cuadrados);
         this.n_habitaciones = n_habitaciones;
         this.precio_compra = precio_compra;
         this.precio_alquiler = precio_alquiler;

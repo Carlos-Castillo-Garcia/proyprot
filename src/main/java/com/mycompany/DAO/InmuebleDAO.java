@@ -10,7 +10,10 @@ import com.mycompany.proyprot.App;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -18,17 +21,35 @@ import java.sql.SQLException;
  */
 public class InmuebleDAO {
     
-    public void insert_piso(Inmuebles casa, String direccion, int m_cuadrados,  Connection conexion) throws SQLException, ClassNotFoundException, IOException{
+    public void insert_piso(Inmuebles casa, Connection conexion) throws SQLException, ClassNotFoundException, IOException{
         String sql = "INSERT INTO casa (calle, m2, nºhabitaciones, precio_compra, precio_alquiler, fecha_compra, idusuario) VALUES (?,?,?,?,?,?,?)";
         
         PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setString(1, direccion);
-        sentencia.setInt(2, m_cuadrados);
+        sentencia.setString(1, casa.getCalle());
+        sentencia.setInt(2, casa.getM_cuadrados());
         sentencia.setInt(3, casa.getN_habitaciones());
         sentencia.setInt(4, casa.getPrecio_compra());
         sentencia.setInt(5, casa.getPrecio_alquiler());
         sentencia.setDate(6, casa.getFecha_compra());
         sentencia.setInt(7, App.user.getId());
         sentencia.executeUpdate();
+    }
+    
+    public List<Inmuebles> listaInmuebles(Connection conexion) throws SQLException, ClassNotFoundException, IOException{
+        List<Inmuebles> pisos = new ArrayList<>();
+        String sql = "SELECT idinmueble, calle FROM casa WHERE idusuario = ?";
+        
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        ResultSet resultado = sentencia.executeQuery();
+        
+        sentencia.setInt(1, App.user.getId());
+        while(resultado.next()){
+            Inmuebles casa = new Inmuebles();
+            casa.setId_casa(resultado.getInt(1));
+            casa.setCalle(resultado.getString(2));
+            pisos.add(casa);
+        }
+        return pisos;
+               
     }
 }

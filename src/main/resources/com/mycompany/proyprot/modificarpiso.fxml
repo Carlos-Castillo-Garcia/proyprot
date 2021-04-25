@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -10,20 +11,15 @@
    <children>
       <AnchorPane id="AnchorPane" layoutX="181.0" layoutY="12.0" prefHeight="517.0" prefWidth="589.0" style="-fx-background-color: #CCD1D1;">
          <children>
-            <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="598.0" text="selecione la casa">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
-            </MenuButton>
+            <ComboBox fx:id="seleccion" onAction="#desplegable" prefHeight="39.0" prefWidth="598.0" promptText="selecione la casa" visibleRowCount="1000" />
             <GridPane layoutY="39.0" prefHeight="355.0" prefWidth="598.0">
                <children>
                   <Label alignment="CENTER" prefHeight="90.0" prefWidth="324.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="numero de habitaciones" />
                   <Label alignment="CENTER" prefHeight="90.0" prefWidth="324.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="numero de inquilinos" GridPane.rowIndex="1" />
                   <Label alignment="CENTER" prefHeight="90.0" prefWidth="324.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="alquiler del piso" GridPane.rowIndex="2" />
-                  <TextField fx:id="nnh" prefHeight="96.0" prefWidth="299.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" />
-                  <TextField fx:id="nni" prefHeight="96.0" prefWidth="299.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="ni" prefHeight="96.0" prefWidth="299.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="NHabitaciones" prefHeight="96.0" prefWidth="299.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" />
+                  <TextField fx:id="NInquilinos" prefHeight="96.0" prefWidth="299.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="alquiler" prefHeight="96.0" prefWidth="299.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Button mnemonicParsing="false" prefHeight="113.0" prefWidth="310.0" style="-fx-border-color: #34495E;" text="añadir cambio" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
                <columnConstraints>
