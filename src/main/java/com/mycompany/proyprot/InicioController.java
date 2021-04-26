@@ -46,7 +46,7 @@ public class InicioController {
                 AlertaUtil.mostrarError("Los datos son erroneos");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(InicioController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("Inicio de sesion erroneo");
         }
         
         

@@ -37,19 +37,25 @@ public class InmuebleDAO {
     
     public List<Inmuebles> listaInmuebles(Connection conexion) throws SQLException, ClassNotFoundException, IOException{
         List<Inmuebles> pisos = new ArrayList<>();
-        String sql = "SELECT idinmueble, calle FROM casa WHERE idusuario = ?";
+        String sql = "SELECT * FROM casa WHERE idusuario = ?";
         
         PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, App.user.getId());
         ResultSet resultado = sentencia.executeQuery();
         
-        sentencia.setInt(1, App.user.getId());
+       
         while(resultado.next()){
             Inmuebles casa = new Inmuebles();
             casa.setId_casa(resultado.getInt(1));
             casa.setCalle(resultado.getString(2));
+            casa.setM_cuadrados(resultado.getInt(3));
+            casa.setN_habitaciones(resultado.getInt(4));
+            casa.setPrecio_compra(resultado.getInt(5));
+            casa.setPrecio_alquiler(resultado.getInt(6));
+            casa.setN_inquilinos(resultado.getInt(7));
+            casa.setFecha_compra(resultado.getDate(8));
             pisos.add(casa);
         }
         return pisos;
-               
     }
 }

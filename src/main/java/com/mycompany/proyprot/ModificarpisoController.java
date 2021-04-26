@@ -46,14 +46,17 @@ public class ModificarpisoController{
     }
     
     
-    public void desplegable() throws SQLException {
+    public void desplegable(){
+        listcasas = new InmuebleDAO();
         try {
             con = ConnDAO.conectar();
             ObservableList<Inmuebles> casas = FXCollections.observableArrayList(listcasas.listaInmuebles(con));
             seleccion.setItems(casas);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ModificarpisoController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("boton no relleno");
         } catch (IOException ex) {
+            AlertaUtil.mostrarError("boton no relleno");
+        } catch (SQLException ex) {
             Logger.getLogger(ModificarpisoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

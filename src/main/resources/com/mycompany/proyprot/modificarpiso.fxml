@@ -7,11 +7,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #1C2833;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyprot.ModificarpisoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #1C2833;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane id="AnchorPane" layoutX="181.0" layoutY="12.0" prefHeight="517.0" prefWidth="589.0" style="-fx-background-color: #CCD1D1;">
          <children>
-            <ComboBox fx:id="seleccion" onAction="#desplegable" prefHeight="39.0" prefWidth="598.0" promptText="selecione la casa" visibleRowCount="1000" />
+            <ComboBox fx:id="seleccion" prefHeight="39.0" prefWidth="598.0" promptText="selecione la casa" visibleRowCount="1000" />
             <GridPane layoutY="39.0" prefHeight="355.0" prefWidth="598.0">
                <children>
                   <Label alignment="CENTER" prefHeight="90.0" prefWidth="324.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="numero de habitaciones" />

@@ -28,7 +28,6 @@ public class MenuController{
     
    @FXML
     private void switchTometerpiso() throws IOException {
-        App.setRoot("meterpiso");
         App.loadMeterPisoWindow();
     }
     
@@ -39,7 +38,6 @@ public class MenuController{
     
     @FXML
     private void switchTomodificarpiso() throws IOException {
-        App.setRoot("modificarpiso");
         App.loadModPisoWindow();
     }
     

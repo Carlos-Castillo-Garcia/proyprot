@@ -64,11 +64,7 @@ public class App extends Application {
         fxmlLoader.setController(controller);
         
         scene.setRoot(fxmlLoader.load());
-        try {
-            controller.desplegable();
-        } catch (SQLException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        controller.desplegable(); 
     }
     
 

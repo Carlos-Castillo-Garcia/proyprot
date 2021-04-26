@@ -72,13 +72,17 @@ public class Inmuebles extends Casa {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("n_habitaciones=").append(n_habitaciones);
-        sb.append(", precio_compra=").append(precio_compra);
-        sb.append(", precio_alquiler=").append(precio_alquiler);
-        sb.append(", n_inquilinos=").append(n_inquilinos);
-        sb.append(", fecha_compra=").append(fecha_compra);
-        return sb.toString();
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("n_habitaciones=").append(n_habitaciones);
+//        sb.append(", precio_compra=").append(precio_compra);
+//        sb.append(", precio_alquiler=").append(precio_alquiler);
+//        sb.append(", n_inquilinos=").append(n_inquilinos);
+//        sb.append(", fecha_compra=").append(fecha_compra);
+        return calle;
+    }
+    
+    public String cont_desp(){
+        return calle;
     }
 
     

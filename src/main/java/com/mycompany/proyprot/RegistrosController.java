@@ -36,7 +36,7 @@ public class RegistrosController {
             try {
                 con = ConnDAO.conectar();
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(RegistrosController.class.getName()).log(Level.SEVERE, null, ex);
+                AlertaUtil.mostrarError("Conexion erronea");
             }
             Users reguser = new Users();
             boolean compuser = false;
@@ -75,7 +75,7 @@ public class RegistrosController {
                     user.insertar(reguser,con);
                     AlertaUtil.mostrarInfo("Usuario registrado");
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(RegistrosController.class.getName()).log(Level.SEVERE, null, ex);
+                    AlertaUtil.mostrarError("Usuario no registrado");
                 }finally{
                     ConnDAO.desconexion(con);
                 }

@@ -52,7 +52,7 @@ public class MeterpisoController {
         try {
                 con = ConnDAO.conectar();
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(RegistrosController.class.getName()).log(Level.SEVERE, null, ex);
+                AlertaUtil.mostrarError("Conexion erronea");
             }
         Date date = Date.valueOf(fecha_compra.getValue());
         int habitaciones_value = Integer.parseInt(habitaciones.getText());
@@ -65,9 +65,9 @@ public class MeterpisoController {
             casa = new Inmuebles(-1, direccion, metros_value,habitaciones_value, precio_compra_value, precio_alquiler_value, -1, date);
             inmueble.insert_piso(casa, con);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MeterpisoController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("Piso no ingresado");
         } catch (SQLException ex) {
-            Logger.getLogger(MeterpisoController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("Piso no ingresados 2");
         }finally{
             ConnDAO.desconexion(con);
         }
