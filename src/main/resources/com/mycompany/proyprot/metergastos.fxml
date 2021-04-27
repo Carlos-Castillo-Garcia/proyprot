@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #1C2833;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyprot.MetergastosController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #1C2833;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane id="AnchorPane" layoutX="200.0" layoutY="4.0" prefHeight="532.0" prefWidth="561.0" style="-fx-background-color: #CCD1D1;">
          <children>
@@ -20,9 +20,9 @@
                   <TextField fx:id="nf" prefHeight="73.0" prefWidth="280.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" />
                   <TextField fx:id="pro" prefHeight="73.0" prefWidth="280.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="pre" prefHeight="73.0" prefWidth="280.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Button mnemonicParsing="false" prefHeight="83.0" prefWidth="280.0" style="-fx-border-color: #34495E;" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <ComboBox prefHeight="62.0" prefWidth="281.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <DatePicker prefHeight="64.0" prefWidth="287.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#ingresargasto" prefHeight="83.0" prefWidth="280.0" style="-fx-border-color: #34495E;" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <ComboBox fx:id="seleccion_gasto" onMouseClicked="#selectgasto" prefHeight="62.0" prefWidth="281.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <DatePicker fx:id="fg" prefHeight="64.0" prefWidth="287.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -38,7 +38,7 @@
                </rowConstraints>
             </GridPane>
             <Button layoutX="209.0" layoutY="452.0" mnemonicParsing="false" onAction="#switchTomenu" style="-fx-border-color: #34495E;" text="volver al menu" />
-            <ComboBox prefHeight="39.0" prefWidth="561.0" promptText="selecione la casa" style="-fx-border-color: #000000;" />
+            <ComboBox fx:id="seleccion" onMouseClicked="#selectcasa" prefHeight="39.0" prefWidth="561.0" promptText="selecione la casa" style="-fx-border-color: #000000;" />
          </children>
       </AnchorPane>
    </children>

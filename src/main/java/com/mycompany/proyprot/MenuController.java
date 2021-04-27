@@ -43,7 +43,7 @@ public class MenuController{
     
     @FXML
     private void switchTometergastos() throws IOException {
-        App.setRoot("metergastos");
+        App.loadMeterGastoWindow();
     }
     
     @FXML

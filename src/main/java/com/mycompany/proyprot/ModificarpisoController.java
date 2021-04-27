@@ -74,7 +74,8 @@ public class ModificarpisoController{
             casainsert.setN_inquilinos(Integer.parseInt(NInquilinos.getText()));
             casainsert.setPrecio_alquiler(Integer.parseInt(alquiler.getText()));
             listcasas.modpiso(casainsert, con);
-            AlertaUtil.mostrarInfo("Piso modificado");
+            listcasas.insert_ingresos(casaselc, con);
+            AlertaUtil.mostrarInfo("Piso modificado e ingreso insertado");
         } catch (SQLException ex) {
             AlertaUtil.mostrarError("Error en la sentencia sql, piso no modificado");
         } catch (ClassNotFoundException ex) {
