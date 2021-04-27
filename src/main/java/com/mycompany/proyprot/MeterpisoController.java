@@ -64,10 +64,11 @@ public class MeterpisoController {
         try {
             casa = new Inmuebles(-1, direccion, metros_value,habitaciones_value, precio_compra_value, precio_alquiler_value, -1, date);
             inmueble.insert_piso(casa, con);
+            AlertaUtil.mostrarInfo("Piso ingresado");
         } catch (ClassNotFoundException ex) {
-            AlertaUtil.mostrarError("Piso no ingresado");
+            AlertaUtil.mostrarError("Error mirar en la consola");
         } catch (SQLException ex) {
-            AlertaUtil.mostrarError("Piso no ingresados 2");
+            AlertaUtil.mostrarError("Error en la sentencia sql");
         }finally{
             ConnDAO.desconexion(con);
         }

@@ -74,12 +74,13 @@ public class ModificarpisoController{
             casainsert.setN_inquilinos(Integer.parseInt(NInquilinos.getText()));
             casainsert.setPrecio_alquiler(Integer.parseInt(alquiler.getText()));
             listcasas.modpiso(casainsert, con);
+            AlertaUtil.mostrarInfo("Piso modificado");
         } catch (SQLException ex) {
-            AlertaUtil.mostrarError("boton no relleno 1");
+            AlertaUtil.mostrarError("Error en la sentencia sql, piso no modificado");
         } catch (ClassNotFoundException ex) {
-            AlertaUtil.mostrarError("boton no relleno 2");
+            AlertaUtil.mostrarError("Error mirar en la consola");
         } catch (IOException ex) {
-            AlertaUtil.mostrarError("boton no relleno 3");
+            AlertaUtil.mostrarError("Error mirar en la consola");
         }
     }
     
