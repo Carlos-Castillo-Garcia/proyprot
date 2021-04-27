@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -37,7 +38,8 @@ public class ModificarpisoController{
     
     private InmuebleDAO listcasas;
     private static Connection con;
-    
+    Inmuebles casaselc = new Inmuebles();
+    Inmuebles casainsert = new Inmuebles();
         
     
     @FXML
@@ -51,6 +53,7 @@ public class ModificarpisoController{
             con = ConnDAO.conectar();
             ObservableList<Inmuebles> casas = FXCollections.observableArrayList(listcasas.listaInmuebles(con));
             seleccion.setItems(casas);
+            cargardatos(casas.get(0));
         } catch (ClassNotFoundException ex) {
             AlertaUtil.mostrarError("boton no relleno");
         } catch (IOException ex) {
@@ -62,16 +65,16 @@ public class ModificarpisoController{
     
     
     @FXML
-    private void insertarpiso(Inmuebles casasel){
-        Inmuebles casa = new Inmuebles();
-            
-            
+    private void insertarpiso(){
+        casainsert = casaselc;
+        
         try {
-            casa.setId_casa(casasel.getId_casa());
-            casa.setN_habitaciones(Integer.parseInt(NHabitaciones.getText()));
-            casa.setN_inquilinos(Integer.parseInt(NInquilinos.getText()));
-            casa.setPrecio_alquiler(Integer.parseInt(alquiler.getText()));
-            listcasas.modpiso(casa, con);
+            con = ConnDAO.conectar();
+            casainsert.setN_habitaciones(Integer.parseInt(NHabitaciones.getText()));
+            casainsert.setN_inquilinos(Integer.parseInt(NInquilinos.getText()));
+            casainsert.setPrecio_alquiler(Integer.parseInt(alquiler.getText()));
+            AlertaUtil.mostrarInfo(casainsert.toString());
+            listcasas.modpiso(casainsert, con);
         } catch (SQLException ex) {
             AlertaUtil.mostrarError("boton no relleno 1");
         } catch (ClassNotFoundException ex) {
@@ -81,11 +84,15 @@ public class ModificarpisoController{
         }
     }
     
+    @FXML
+    private void selectcasa(Event event){
+       casaselc = (Inmuebles)seleccion.getSelectionModel().getSelectedItem();      
+       cargardatos(casaselc);
+    }
     
-    public Inmuebles selectcasa(){
-        Inmuebles casaselc = new Inmuebles();
-       casaselc = (Inmuebles)seleccion.getSelectionModel().getSelectedItem();
-       
-       return casaselc;
+    public void cargardatos(Inmuebles casa){
+        NHabitaciones.setText(String.valueOf(casa.getN_habitaciones()));
+        NInquilinos.setText(String.valueOf(casa.getN_inquilinos()));
+        alquiler.setText(String.valueOf(casa.getPrecio_alquiler()));
     }
 }
