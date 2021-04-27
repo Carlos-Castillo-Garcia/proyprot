@@ -45,8 +45,7 @@ public class ModificarpisoController{
          App.setRoot("menu");
     }
     
-    
-    public void desplegable(){
+    public void desplegable() {
         listcasas = new InmuebleDAO();
         try {
             con = ConnDAO.conectar();
@@ -61,4 +60,32 @@ public class ModificarpisoController{
         }
     }
     
+    
+    @FXML
+    private void insertarpiso(Inmuebles casasel){
+        Inmuebles casa = new Inmuebles();
+            
+            
+        try {
+            casa.setId_casa(casasel.getId_casa());
+            casa.setN_habitaciones(Integer.parseInt(NHabitaciones.getText()));
+            casa.setN_inquilinos(Integer.parseInt(NInquilinos.getText()));
+            casa.setPrecio_alquiler(Integer.parseInt(alquiler.getText()));
+            listcasas.modpiso(casa, con);
+        } catch (SQLException ex) {
+            AlertaUtil.mostrarError("boton no relleno 1");
+        } catch (ClassNotFoundException ex) {
+            AlertaUtil.mostrarError("boton no relleno 2");
+        } catch (IOException ex) {
+            AlertaUtil.mostrarError("boton no relleno 3");
+        }
+    }
+    
+    
+    public Inmuebles selectcasa(){
+        Inmuebles casaselc = new Inmuebles();
+       casaselc = (Inmuebles)seleccion.getSelectionModel().getSelectedItem();
+       
+       return casaselc;
+    }
 }

@@ -58,4 +58,15 @@ public class InmuebleDAO {
         }
         return pisos;
     }
+    
+    public void modpiso(Inmuebles casa, Connection conexion) throws SQLException, ClassNotFoundException, IOException{
+        String sql = "UPDATE casa SET n_habitaciones = ?, n_inquilinos = ?, precio_alquiler = ? where idinmueble = ?";
+        
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, casa.getN_habitaciones());
+        sentencia.setInt(2, casa.getN_inquilinos());
+        sentencia.setInt(3, casa.getPrecio_alquiler());
+        sentencia.setInt(4, casa.getId_casa());
+        sentencia.executeUpdate();
+    }
 }
