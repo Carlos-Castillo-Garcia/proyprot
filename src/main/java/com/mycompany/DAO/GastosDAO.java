@@ -7,8 +7,11 @@ package com.mycompany.DAO;
 
 import com.mycompany.models.Gastos;
 import com.mycompany.models.Inmuebles;
+import com.mycompany.proyprot.App;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -21,4 +24,186 @@ public class GastosDAO {
                 
         
     }
+    
+    public int gastocasasuma(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+        int salida=0;
+        String sql = "select sum(CANTIDAD) from gastos where IDINMUEBLE_GASTO=?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, id);
+        ResultSet resultado = sentencia.executeQuery();
+        
+        while(resultado.next()){
+            salida = resultado.getInt(1);
+        }
+        return salida;
+    }
+    
+    public int gastoaguatotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+        int salida=0;
+        String sql = "select sum(g.CANTIDAD) from gastos g inner join casa c on g.IDINMUEBLE_GASTO=c.IDINMUEBLE where c.IDUSUARIO=? and g.TIPO_GASTO_ID=1";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, App.user.getId());
+        ResultSet resultado = sentencia.executeQuery();
+        while(resultado.next()){
+            salida = resultado.getInt(1);
+        }
+        return salida;
+    }
+    
+    public int gastoluztotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+        int salida=0;
+        String sql = "select sum(g.CANTIDAD) from gastos g inner join casa c on g.IDINMUEBLE_GASTO=c.IDINMUEBLE where c.IDUSUARIO=? and g.TIPO_GASTO_ID=2";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, App.user.getId());
+        ResultSet resultado = sentencia.executeQuery();
+        while(resultado.next()){
+            salida = resultado.getInt(1);
+        }
+        return salida;
+    }
+    
+    public int gastogastotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+        int salida=0;
+        String sql = "select sum(g.CANTIDAD) from gastos g inner join casa c on g.IDINMUEBLE_GASTO=c.IDINMUEBLE where c.IDUSUARIO=? and g.TIPO_GASTO_ID=3";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, App.user.getId());
+        ResultSet resultado = sentencia.executeQuery();
+        while(resultado.next()){
+            salida = resultado.getInt(1);
+        }
+        return salida;
+    }
+    
+    public int gastoreformatotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+        int salida=0;
+        String sql = "select sum(g.CANTIDAD) from gastos g inner join casa c on g.IDINMUEBLE_GASTO=c.IDINMUEBLE where c.IDUSUARIO=? and g.TIPO_GASTO_ID=4";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, App.user.getId());
+        ResultSet resultado = sentencia.executeQuery();
+        while(resultado.next()){
+            salida = resultado.getInt(1);
+        }
+        return salida;
+    }
+    
+    public int gastoreparaciontotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+        int salida=0;
+        String sql = "select sum(g.CANTIDAD) from gastos g inner join casa c on g.IDINMUEBLE_GASTO=c.IDINMUEBLE where c.IDUSUARIO=? and g.TIPO_GASTO_ID=5";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, App.user.getId());
+        ResultSet resultado = sentencia.executeQuery();
+        while(resultado.next()){
+            salida = resultado.getInt(1);
+        }
+        return salida;
+    }
+    
+    public int gastocomunidadtotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+        int salida=0;
+        String sql = "select sum(g.CANTIDAD) from gastos g inner join casa c on g.IDINMUEBLE_GASTO=c.IDINMUEBLE where c.IDUSUARIO=? and g.TIPO_GASTO_ID=6";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, App.user.getId());
+        ResultSet resultado = sentencia.executeQuery();
+        while(resultado.next()){
+            salida = resultado.getInt(1);
+        }
+        return salida;
+    }
+    
+    public int gastototaltotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+        int salida=0;
+        String sql = "select sum(g.CANTIDAD) from gastos g inner join casa c on g.IDINMUEBLE_GASTO=c.IDINMUEBLE where c.IDUSUARIO=?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, App.user.getId());
+        ResultSet resultado = sentencia.executeQuery();
+        while(resultado.next()){
+            salida = resultado.getInt(1);
+        }
+        return salida;
+    }
+    
+    public int gastoaguacasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+        int salida=0;
+        String sql = "select sum(CANTIDAD) from gastos where IDINMUEBLE_GASTO=? and TIPO_GASTO_ID=1";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, id);
+        ResultSet resultado = sentencia.executeQuery();
+        while(resultado.next()){
+            salida = resultado.getInt(1);
+        }
+        return salida;
+    }
+    
+    public int gastoluzcasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+        int salida=0;
+        String sql = "select sum(CANTIDAD) from gastos where IDINMUEBLE_GASTO=? and TIPO_GASTO_ID=2";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, id);
+        ResultSet resultado = sentencia.executeQuery();
+        while(resultado.next()){
+            salida = resultado.getInt(1);
+        }
+        return salida;
+    }
+    
+    public int gastogascasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+        int salida=0;
+        String sql = "select sum(CANTIDAD) from gastos where IDINMUEBLE_GASTO=? and TIPO_GASTO_ID=3";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, id);
+        ResultSet resultado = sentencia.executeQuery();
+        while(resultado.next()){
+            salida = resultado.getInt(1);
+        }
+        return salida;
+    }
+    
+    public int gastoreformacasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+        int salida=0;
+        String sql = "select sum(CANTIDAD) from gastos where IDINMUEBLE_GASTO=? and TIPO_GASTO_ID=4";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, id);
+        ResultSet resultado = sentencia.executeQuery();
+        while(resultado.next()){
+            salida = resultado.getInt(1);
+        }
+        return salida;
+    }
+    
+    public int gastoreparacioncasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+        int salida=0;
+        String sql = "select sum(CANTIDAD) from gastos where IDINMUEBLE_GASTO=? and TIPO_GASTO_ID=5";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, id);
+        ResultSet resultado = sentencia.executeQuery();
+        while(resultado.next()){
+            salida = resultado.getInt(1);
+        }
+        return salida;
+    }
+    
+    public int gastocomunidadcasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+        int salida=0;
+        String sql = "select sum(CANTIDAD) from gastos where IDINMUEBLE_GASTO=? and TIPO_GASTO_ID=6";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, id);
+        ResultSet resultado = sentencia.executeQuery();
+        while(resultado.next()){
+            salida = resultado.getInt(1);
+        }
+        return salida;
+    }
+    
+    public int gastototalcasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+        int salida=0;
+        String sql = "select sum(CANTIDAD) from gastos where IDINMUEBLE_GASTO=?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, id);
+        ResultSet resultado = sentencia.executeQuery();
+        while(resultado.next()){
+            salida = resultado.getInt(1);
+        }
+        return salida;
+    }
+    
 }

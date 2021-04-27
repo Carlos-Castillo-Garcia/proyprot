@@ -78,4 +78,16 @@ public class App extends Application {
         scene.setRoot(fxmlLoader.load());
         controller.desplegable();
     }
+    
+    static void loadgastostotalWindow() throws IOException {
+        String fxml = "gastostotal";
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+
+        // Give the controller access to the main app.
+        GastostotalController controller = new GastostotalController();
+        fxmlLoader.setController(controller);
+        
+        scene.setRoot(fxmlLoader.load());
+        controller.desplegable();
+    }
 }

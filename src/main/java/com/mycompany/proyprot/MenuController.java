@@ -48,7 +48,7 @@ public class MenuController{
     
     @FXML
     private void switchTogastostotal() throws IOException {
-        App.setRoot("gastostotal");
+        App.loadgastostotalWindow();
     }
     
     public void prueba() throws IOException{
