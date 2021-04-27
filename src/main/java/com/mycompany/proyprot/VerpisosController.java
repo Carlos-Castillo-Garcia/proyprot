@@ -6,6 +6,8 @@
 package com.mycompany.proyprot;
 
 import com.mycompany.DAO.ConnDAO;
+import com.mycompany.DAO.GastosDAO;
+import com.mycompany.DAO.IngresosDAO;
 import com.mycompany.DAO.InmuebleDAO;
 import com.mycompany.models.Inmuebles;
 import java.io.IOException;
@@ -46,6 +48,8 @@ public class VerpisosController{
     @FXML
     private Label beneficios;
     private InmuebleDAO listcasas;
+    private GastosDAO gastototal;
+    private IngresosDAO ingresostotal;
     private static Connection con;
     Inmuebles casaselc = new Inmuebles();
 
@@ -77,11 +81,24 @@ public class VerpisosController{
     }
 
     public void cargardatos(Inmuebles casa){
-        fc.setText(String.valueOf(casa.getFecha_compra()));
-        mc.setText(String.valueOf(casa.getM_cuadrados()));
-        nh.setText(String.valueOf(casa.getN_habitaciones()));
-        ni.setText(String.valueOf(casa.getN_inquilinos()));
-        pa.setText(String.valueOf(casa.getPrecio_alquiler()));
+        gastototal= new GastosDAO();
+        ingresostotal= new IngresosDAO();
+        try {
+            fc.setText(String.valueOf(casa.getFecha_compra()));
+            mc.setText(String.valueOf(casa.getM_cuadrados()));
+            nh.setText(String.valueOf(casa.getN_habitaciones()));
+            ni.setText(String.valueOf(casa.getN_inquilinos()));
+            pa.setText(String.valueOf(casa.getPrecio_alquiler()));
+            gastos.setText(String.valueOf(gastototal.gastocasasuma(casa.getId_casa(), con)));
+            ingresos.setText(String.valueOf(ingresostotal.ingresocasasuma(casa.getId_casa(), con)));
+            beneficios.setText(String.valueOf((ingresostotal.ingresocasasuma(casa.getId_casa(), con))-(gastototal.gastocasasuma(casa.getId_casa(), con))));
+        } catch (SQLException ex) {
+            Logger.getLogger(VerpisosController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(VerpisosController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(VerpisosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

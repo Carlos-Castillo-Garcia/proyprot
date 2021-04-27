@@ -7,13 +7,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #1C2833;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyprot.GastostotalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #1C2833;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="180.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="600.0" style="-fx-background-color: #CCD1D1;">
          <children>
             <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="416.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
                <tabs>
-                  <Tab text="total">
+                  <Tab text="total de gastos">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="464.0" prefWidth="600.0" style="-fx-background-color: ;">
                            <children>
@@ -26,13 +26,13 @@
                                     <Label alignment="CENTER" prefHeight="57.0" prefWidth="300.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="gasto de reparacion" GridPane.rowIndex="4" />
                                     <Label alignment="CENTER" prefHeight="57.0" prefWidth="300.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="gasto comunidad" GridPane.rowIndex="5" />
                                     <Label alignment="CENTER" prefHeight="57.0" prefWidth="300.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="gasto totales" GridPane.rowIndex="6" />
-                                    <Label alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" />
-                                    <Label alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <Label alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <Label alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <Label alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                    <Label alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                    <Label alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <Label fx:id="gat" alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" />
+                                    <Label fx:id="glt" alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label fx:id="ggt" alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label fx:id="grft" alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Label fx:id="grpt" alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Label fx:id="gtt" alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <Label fx:id="gct" alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                  </children>
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -65,13 +65,13 @@
                                     <Label alignment="CENTER" prefHeight="57.0" prefWidth="300.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="gasto de reparacion" GridPane.rowIndex="4" />
                                     <Label alignment="CENTER" prefHeight="57.0" prefWidth="300.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="gasto comunidad" GridPane.rowIndex="5" />
                                     <Label alignment="CENTER" prefHeight="57.0" prefWidth="300.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="gasto totales" GridPane.rowIndex="6" />
-                                    <Label alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" />
-                                    <Label alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <Label alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <Label alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <Label alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                    <Label alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                    <Label alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <Label fx:id="gac" alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" textFill="RED" GridPane.columnIndex="1" />
+                                    <Label fx:id="glc" alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label fx:id="ggc" alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label fx:id="grfc" alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Label fx:id="grpc" alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Label fx:id="gcc" alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <Label fx:id="gtc" alignment="CENTER" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: #000000;" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                  </children>
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -87,7 +87,7 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                               </GridPane>
-                              <ComboBox prefHeight="39.0" prefWidth="600.0" promptText="selecione la casa" />
+                              <ComboBox fx:id="seleccion" onMouseClicked="#selectcasa" prefHeight="39.0" prefWidth="600.0" promptText="selecione la casa" />
                            </children>
                         </AnchorPane>
                      </content>
