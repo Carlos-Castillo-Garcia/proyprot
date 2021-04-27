@@ -87,12 +87,7 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                               </GridPane>
-                              <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="600.0" text="selecione la casa">
-                                 <items>
-                                    <MenuItem mnemonicParsing="false" text="Action 1" />
-                                    <MenuItem mnemonicParsing="false" text="Action 2" />
-                                 </items>
-                              </MenuButton>
+                              <ComboBox prefHeight="39.0" prefWidth="600.0" promptText="selecione la casa" />
                            </children>
                         </AnchorPane>
                      </content>

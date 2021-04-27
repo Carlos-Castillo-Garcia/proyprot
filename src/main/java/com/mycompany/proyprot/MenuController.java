@@ -33,7 +33,7 @@ public class MenuController{
     
     @FXML
     private void switchToverpisos() throws IOException {
-        App.setRoot("verpisos");
+        App.loadverpisoWindow();
     }
     
     @FXML

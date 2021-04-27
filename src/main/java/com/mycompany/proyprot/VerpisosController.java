@@ -5,8 +5,20 @@
  */
 package com.mycompany.proyprot;
 
+import com.mycompany.DAO.ConnDAO;
+import com.mycompany.DAO.InmuebleDAO;
+import com.mycompany.models.Inmuebles;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -14,10 +26,62 @@ import javafx.fxml.FXML;
  * @author Ismael m
  */
 public class VerpisosController{
+    
+    @FXML
+    private ComboBox seleccion;
+    @FXML
+    private Label fc;
+    @FXML
+    private Label mc;
+    @FXML
+    private Label nh;
+    @FXML
+    private Label ni;
+    @FXML
+    private Label pa;
+    @FXML
+    private Label gastos;
+    @FXML
+    private Label ingresos;
+    @FXML
+    private Label beneficios;
+    private InmuebleDAO listcasas;
+    private static Connection con;
+    Inmuebles casaselc = new Inmuebles();
 
     @FXML
     private void switchTomenu() throws IOException{
          App.setRoot("menu");
+    }
+    
+    @FXML
+    private void selectcasa(Event event){
+       casaselc = (Inmuebles)seleccion.getSelectionModel().getSelectedItem();      
+       cargardatos(casaselc);
+    }
+    
+    public void desplegable() {
+        listcasas = new InmuebleDAO();
+        try {
+            con = ConnDAO.conectar();
+            ObservableList<Inmuebles> casas = FXCollections.observableArrayList(listcasas.listaInmuebles(con));
+            seleccion.setItems(casas);
+//            cargardatos(casas.get(0));
+        } catch (ClassNotFoundException ex) {
+            AlertaUtil.mostrarError("boton no relleno");
+        } catch (IOException ex) {
+            AlertaUtil.mostrarError("boton no relleno");
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarpisoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void cargardatos(Inmuebles casa){
+        fc.setText(String.valueOf(casa.getFecha_compra()));
+        mc.setText(String.valueOf(casa.getM_cuadrados()));
+        nh.setText(String.valueOf(casa.getN_habitaciones()));
+        ni.setText(String.valueOf(casa.getN_inquilinos()));
+        pa.setText(String.valueOf(casa.getPrecio_alquiler()));
     }
     
 }

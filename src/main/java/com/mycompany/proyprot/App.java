@@ -67,5 +67,16 @@ public class App extends Application {
         controller.desplegable(); 
     }
     
+    static void loadverpisoWindow() throws IOException {
+        String fxml = "verpisos";
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+
+        // Give the controller access to the main app.
+        VerpisosController controller = new VerpisosController();
+        fxmlLoader.setController(controller);
+        
+        scene.setRoot(fxmlLoader.load());
+        controller.desplegable(); 
+    }
 
 }

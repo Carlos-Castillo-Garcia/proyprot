@@ -10,12 +10,6 @@
    <children>
       <AnchorPane id="AnchorPane" layoutX="200.0" layoutY="4.0" prefHeight="532.0" prefWidth="561.0" style="-fx-background-color: #CCD1D1;">
          <children>
-            <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="561.0" text="selecione la casa">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
-            </MenuButton>
             <GridPane layoutY="39.0" prefHeight="381.0" prefWidth="561.0">
                <children>
                   <Label alignment="CENTER" prefHeight="82.0" prefWidth="280.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="nº factura" />
@@ -25,15 +19,10 @@
                   <Label alignment="CENTER" prefHeight="82.0" prefWidth="280.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="tipo del gasto" GridPane.rowIndex="4" />
                   <TextField fx:id="nf" prefHeight="73.0" prefWidth="280.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" />
                   <TextField fx:id="pro" prefHeight="73.0" prefWidth="280.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="fe" prefHeight="73.0" prefWidth="280.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <TextField fx:id="pre" prefHeight="73.0" prefWidth="280.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <MenuButton mnemonicParsing="false" prefHeight="65.0" prefWidth="280.0" style="-fx-border-color: #34495E;" text="selecione el tipo" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
                   <Button mnemonicParsing="false" prefHeight="83.0" prefWidth="280.0" style="-fx-border-color: #34495E;" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <ComboBox prefHeight="62.0" prefWidth="281.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <DatePicker prefHeight="64.0" prefWidth="287.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -49,6 +38,7 @@
                </rowConstraints>
             </GridPane>
             <Button layoutX="209.0" layoutY="452.0" mnemonicParsing="false" onAction="#switchTomenu" style="-fx-border-color: #34495E;" text="volver al menu" />
+            <ComboBox prefHeight="39.0" prefWidth="561.0" promptText="selecione la casa" style="-fx-border-color: #000000;" />
          </children>
       </AnchorPane>
    </children>
