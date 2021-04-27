@@ -67,17 +67,6 @@ public class App extends Application {
         controller.desplegable(); 
     }
     
-    static void loadMeterGastoWindow() throws IOException {
-        String fxml = "metergastos";
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-
-        // Give the controller access to the main app.
-        MetergastosController controller = new MetergastosController();
-        fxmlLoader.setController(controller);
-        
-        scene.setRoot(fxmlLoader.load());
-    }
-    
     static void loadverpisoWindow() throws IOException {
         String fxml = "verpisos";
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));

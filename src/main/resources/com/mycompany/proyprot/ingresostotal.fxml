@@ -10,15 +10,10 @@
    <children>
       <AnchorPane layoutX="255.0" layoutY="93.0" prefHeight="354.0" prefWidth="451.0" style="-fx-background-color: #CCD1D1;">
          <children>
-            <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="451.0" text="selecione la casa" textAlignment="CENTER">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-            </MenuButton>
             <Label alignment="CENTER" layoutY="39.0" prefHeight="94.0" prefWidth="451.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="total de ingreso" />
             <Label alignment="CENTER" layoutY="133.0" prefHeight="102.0" prefWidth="451.0" style="-fx-border-color: #000000; -fx-background-color: #ffffff;" text="Label" />
             <Button alignment="CENTER" layoutX="163.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchTomenu" style="-fx-border-color: #34495E;" text="volver menu" />
+            <ComboBox prefHeight="39.0" prefWidth="451.0" promptText="selecione la casa" />
          </children>
       </AnchorPane>
    </children>
