@@ -73,7 +73,6 @@ public class ModificarpisoController{
             casainsert.setN_habitaciones(Integer.parseInt(NHabitaciones.getText()));
             casainsert.setN_inquilinos(Integer.parseInt(NInquilinos.getText()));
             casainsert.setPrecio_alquiler(Integer.parseInt(alquiler.getText()));
-            AlertaUtil.mostrarInfo(casainsert.toString());
             listcasas.modpiso(casainsert, con);
         } catch (SQLException ex) {
             AlertaUtil.mostrarError("boton no relleno 1");
