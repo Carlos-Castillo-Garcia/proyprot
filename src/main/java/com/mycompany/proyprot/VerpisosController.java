@@ -75,7 +75,7 @@ public class VerpisosController{
             Logger.getLogger(ModificarpisoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void cargardatos(Inmuebles casa){
         fc.setText(String.valueOf(casa.getFecha_compra()));
         mc.setText(String.valueOf(casa.getM_cuadrados()));
