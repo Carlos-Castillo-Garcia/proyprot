@@ -70,13 +70,6 @@ public class InmuebleDAO {
         sentencia.executeUpdate();
     }
     
-    public void insert_ingresos(Inmuebles casa, Connection conexion) throws SQLException, ClassNotFoundException, IOException{
-        String sql = "INSERT INTO ingresos (cantida_ingreso, idinmueble_ingreso) VALUES (?,?)";
-        
-        PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setInt(1, casa.getPrecio_alquiler());
-        sentencia.setInt(2, casa.getId_casa());
-        sentencia.executeUpdate();
-    }
+    
     
 }

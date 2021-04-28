@@ -1,5 +1,6 @@
 package com.mycompany.DAO;
 
+import com.mycompany.models.Inmuebles;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,6 +23,15 @@ public class IngresosDAO {
             salida = resultado.getInt(1);
         }
         return salida;
+    }
+    
+    public void insert_ingresos(Inmuebles casa, Connection conexion) throws SQLException, ClassNotFoundException, IOException{
+        String sql = "INSERT INTO ingresos (cantida_ingreso, idinmueble_ingreso) VALUES (?,?)";
+        
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, casa.getPrecio_alquiler());
+        sentencia.setInt(2, casa.getId_casa());
+        sentencia.executeUpdate();
     }
     
 }

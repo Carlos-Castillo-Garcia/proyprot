@@ -62,6 +62,7 @@ public class MetergastosController{
             con = ConnDAO.conectar();
             ObservableList<Inmuebles> casas = FXCollections.observableArrayList(listcasas.listaInmuebles(con));
             seleccion.setItems(casas);
+            seleccion.setValue(casas.get(0));
         } catch (ClassNotFoundException ex) {
             AlertaUtil.mostrarError("boton no relleno");
         } catch (IOException ex) {
@@ -82,6 +83,7 @@ public class MetergastosController{
             con = ConnDAO.conectar();
             ObservableList<Tipo_Gasto> tipos_gastos = FXCollections.observableArrayList(listgastos.selectgastos(con));
             seleccion_gasto.setItems(tipos_gastos);
+            seleccion_gasto.setValue(tipos_gastos.get(0));
         } catch (ClassNotFoundException ex) {
             AlertaUtil.mostrarError("boton no relleno");
         } catch (IOException ex) {
@@ -93,7 +95,7 @@ public class MetergastosController{
     
     @FXML
     private void selectgasto(Event event){
-       gastoselec = (Tipo_Gasto)seleccion_gasto.getSelectionModel().getSelectedItem();      
+       gastoselec = (Tipo_Gasto)seleccion_gasto.getSelectionModel().getSelectedItem();  
     }
     
     @FXML
