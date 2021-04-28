@@ -6,6 +6,7 @@
 package com.mycompany.proyprot;
 
 import com.mycompany.DAO.ConnDAO;
+import com.mycompany.DAO.IngresosDAO;
 import com.mycompany.DAO.InmuebleDAO;
 import com.mycompany.models.Inmuebles;
 import java.io.IOException;
@@ -37,6 +38,7 @@ public class ModificarpisoController{
     private TextField alquiler;
     
     private InmuebleDAO listcasas;
+    private IngresosDAO ingreso;
     private static Connection con;
     Inmuebles casaselc = new Inmuebles();
     Inmuebles casainsert = new Inmuebles();
@@ -53,6 +55,7 @@ public class ModificarpisoController{
             con = ConnDAO.conectar();
             ObservableList<Inmuebles> casas = FXCollections.observableArrayList(listcasas.listaInmuebles(con));
             seleccion.setItems(casas);
+            seleccion.setValue(casas.get(0));
             cargardatos(casas.get(0));
         } catch (ClassNotFoundException ex) {
             AlertaUtil.mostrarError("boton no relleno");
@@ -74,7 +77,7 @@ public class ModificarpisoController{
             casainsert.setN_inquilinos(Integer.parseInt(NInquilinos.getText()));
             casainsert.setPrecio_alquiler(Integer.parseInt(alquiler.getText()));
             listcasas.modpiso(casainsert, con);
-            listcasas.insert_ingresos(casaselc, con);
+            ingreso.insert_ingresos(casainsert, con);
             AlertaUtil.mostrarInfo("Piso modificado e ingreso insertado");
         } catch (SQLException ex) {
             AlertaUtil.mostrarError("Error en la sentencia sql, piso no modificado");

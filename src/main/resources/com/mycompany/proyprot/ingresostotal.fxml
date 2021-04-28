@@ -6,14 +6,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #1C2833;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyprot.IngresostotalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #1C2833;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="255.0" layoutY="93.0" prefHeight="354.0" prefWidth="451.0" style="-fx-background-color: #CCD1D1;">
          <children>
             <Label alignment="CENTER" layoutY="39.0" prefHeight="94.0" prefWidth="451.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="total de ingreso" />
-            <Label alignment="CENTER" layoutY="133.0" prefHeight="102.0" prefWidth="451.0" style="-fx-border-color: #000000; -fx-background-color: #ffffff;" text="Label" />
+            <Label fx:id="ingresomuestra" alignment="CENTER" layoutY="133.0" prefHeight="102.0" prefWidth="451.0" style="-fx-border-color: #000000; -fx-background-color: #ffffff;" />
             <Button alignment="CENTER" layoutX="163.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchTomenu" style="-fx-border-color: #34495E;" text="volver menu" />
-            <ComboBox prefHeight="39.0" prefWidth="451.0" promptText="selecione la casa" />
+            <ComboBox fx:id="seleccion" onAction="#selectcasa" prefHeight="39.0" prefWidth="451.0" promptText="selecione la casa" style="-fx-border-color: #000000;" />
          </children>
       </AnchorPane>
    </children>
