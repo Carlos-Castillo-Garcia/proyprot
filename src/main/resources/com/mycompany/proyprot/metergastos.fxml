@@ -20,8 +20,8 @@
                   <TextField fx:id="nf" prefHeight="73.0" prefWidth="280.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" />
                   <TextField fx:id="pro" prefHeight="73.0" prefWidth="280.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="pre" prefHeight="73.0" prefWidth="280.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Button mnemonicParsing="false" onAction="#ingresargasto" prefHeight="83.0" prefWidth="280.0" style="-fx-border-color: #34495E;" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <ComboBox fx:id="seleccion_gasto" onMouseClicked="#selectgasto" prefHeight="62.0" prefWidth="281.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" onAction="#ingresargasto" prefHeight="83.0" prefWidth="280.0" style="-fx-border-color: #34495E;" text="ingresar gasto" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <ComboBox fx:id="seleccion_gasto" onAction="#selectgasto" prefHeight="62.0" prefWidth="281.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <DatePicker fx:id="fg" prefHeight="64.0" prefWidth="287.0" style="-fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
                <columnConstraints>
@@ -38,7 +38,7 @@
                </rowConstraints>
             </GridPane>
             <Button layoutX="209.0" layoutY="452.0" mnemonicParsing="false" onAction="#switchTomenu" style="-fx-border-color: #34495E;" text="volver al menu" />
-            <ComboBox fx:id="seleccion" onMouseClicked="#selectcasa" prefHeight="39.0" prefWidth="561.0" promptText="selecione la casa" style="-fx-border-color: #000000;" />
+            <ComboBox fx:id="seleccion" onAction="#selectcasa" prefHeight="39.0" prefWidth="561.0" promptText="selecione la casa" style="-fx-border-color: #000000;" />
          </children>
       </AnchorPane>
    </children>

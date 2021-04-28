@@ -70,7 +70,7 @@ public class VerpisosController{
             con = ConnDAO.conectar();
             ObservableList<Inmuebles> casas = FXCollections.observableArrayList(listcasas.listaInmuebles(con));
             seleccion.setItems(casas);
-//            cargardatos(casas.get(0));
+            seleccion.setValue(casas.get(0));
         } catch (ClassNotFoundException ex) {
             AlertaUtil.mostrarError("boton no relleno");
         } catch (IOException ex) {

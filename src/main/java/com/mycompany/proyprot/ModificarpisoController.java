@@ -38,7 +38,7 @@ public class ModificarpisoController{
     private TextField alquiler;
     
     private InmuebleDAO listcasas;
-    private IngresosDAO instingresos;
+    private IngresosDAO ingreso;
     private static Connection con;
     Inmuebles casaselc = new Inmuebles();
     Inmuebles casainsert = new Inmuebles();
@@ -77,7 +77,7 @@ public class ModificarpisoController{
             casainsert.setN_inquilinos(Integer.parseInt(NInquilinos.getText()));
             casainsert.setPrecio_alquiler(Integer.parseInt(alquiler.getText()));
             listcasas.modpiso(casainsert, con);
-            instingresos.insert_ingresos(casainsert, con);
+            ingreso.insert_ingresos(casainsert, con);
             AlertaUtil.mostrarInfo("Piso modificado e ingreso insertado");
         } catch (SQLException ex) {
             AlertaUtil.mostrarError("Error en la sentencia sql, piso no modificado");

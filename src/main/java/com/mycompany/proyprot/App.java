@@ -102,4 +102,17 @@ public class App extends Application {
         controller.desplegablecasa();
         controller.desplegablegasto();
     }
+    
+    static void loadingresostotalWindow() throws IOException {
+        String fxml = "ingresostotal";
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+
+        // Give the controller access to the main app.
+        IngresostotalController controller = new IngresostotalController();
+        fxmlLoader.setController(controller);
+        
+        scene.setRoot(fxmlLoader.load());
+        controller.desplegable();
+    }
+    
 }

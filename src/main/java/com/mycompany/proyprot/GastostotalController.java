@@ -79,6 +79,7 @@ public class GastostotalController{
             con = ConnDAO.conectar();
             ObservableList<Inmuebles> casas = FXCollections.observableArrayList(listcasas.listaInmuebles(con));
             seleccion.setItems(casas);
+            seleccion.setValue(casas.get(0));
             cargardatostotal();
         } catch (ClassNotFoundException ex) {
             AlertaUtil.mostrarError("boton no relleno");
@@ -117,7 +118,7 @@ public class GastostotalController{
             grfc.setText(String.valueOf(gastos.gastoreformacasa(casa.getId_casa(), con)));
             grpc.setText(String.valueOf(gastos.gastoreparacioncasa(casa.getId_casa(), con)));
             gcc.setText(String.valueOf(gastos.gastocomunidadcasa(casa.getId_casa(), con)));
-            gtc.setText(String.valueOf(gastos.gastototalcasa(casa.getId_casa(), con)));
+            gtc.setText(String.valueOf(gastos.gastocasasuma(casa.getId_casa(), con)));
         } catch (SQLException ex) {
             Logger.getLogger(GastostotalController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

@@ -58,7 +58,7 @@ public class MenuController{
 
     @FXML
     private void switchToingresostotal() throws IOException {
-        App.setRoot("ingresostotal");
+        App.loadingresostotalWindow();
     }
     
 }
