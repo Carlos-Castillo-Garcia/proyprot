@@ -51,10 +51,10 @@ public class MenuController{
         App.loadgastostotalWindow();
     }
     
-    public void prueba() throws IOException{
-        labelid.setText(String.valueOf(App.user.getId()));
-        labeluser.setText(App.user.getNombre());
-    }
+//    public void prueba() throws IOException{
+//        labelid.setText(String.valueOf(App.user.getId()));
+//        labeluser.setText(App.user.getNombre());
+//    }
 
     @FXML
     private void switchToingresostotal() throws IOException {

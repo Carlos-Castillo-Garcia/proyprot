@@ -39,6 +39,7 @@ public class InicioController {
                         tokenpass = true;
                         App.setUsuario(users.get(i));
                         App.setRoot("menu");
+                        AlertaUtil.mostrarInfo("Has iniciado sesion con: " + App.user.getNombre());
                     }
                 }
             }
