@@ -13,12 +13,16 @@ import com.mycompany.models.Inmuebles;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
@@ -52,6 +56,7 @@ public class VerpisosController{
     private IngresosDAO ingresostotal;
     private static Connection con;
     Inmuebles casaselc = new Inmuebles();
+    Inmuebles casadel = new Inmuebles();
 
     @FXML
     private void switchTomenu() throws IOException{
@@ -70,7 +75,6 @@ public class VerpisosController{
             con = ConnDAO.conectar();
             ObservableList<Inmuebles> casas = FXCollections.observableArrayList(listcasas.listaInmuebles(con));
             seleccion.setItems(casas);
-            seleccion.setValue(casas.get(0));
         } catch (ClassNotFoundException ex) {
             AlertaUtil.mostrarError("boton no relleno");
         } catch (IOException ex) {
@@ -100,5 +104,31 @@ public class VerpisosController{
             Logger.getLogger(VerpisosController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    @FXML
+    private void borrar_piso(){
+            casadel = (Inmuebles)seleccion.getSelectionModel().getSelectedItem(); 
+            if (casadel == null) {
+                AlertaUtil.mostrarError("No se ha seleccionado ningun piso");
+                return;
+                }
+        try {
+            Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmacion.setTitle("Eliminar Ruta");
+            confirmacion.setContentText("¿Estás seguro de querer eliminar este piso?");
+            Optional<ButtonType> respuesta = confirmacion.showAndWait();
+            if (respuesta.get().getButtonData() == ButtonBar.ButtonData.CANCEL_CLOSE)
+                return;
+            listcasas.del_piso(casaselc, con);
+            desplegable();
+        } catch (SQLException ex) {
+            AlertaUtil.mostrarError("Error al eliminar el piso seleccionada. " + ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(VerpisosController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(VerpisosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     
 }

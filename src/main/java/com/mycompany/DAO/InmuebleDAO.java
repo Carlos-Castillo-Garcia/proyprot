@@ -70,6 +70,14 @@ public class InmuebleDAO {
         sentencia.executeUpdate();
     }
     
+    public void del_piso(Inmuebles casa, Connection conexion) throws SQLException, ClassNotFoundException, IOException{
+        String sql = "DELETE FROM casa WHERE idinmueble=?";
+        
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, casa.getId_casa());
+        sentencia.executeUpdate();
+    }
+    
     
     
 }

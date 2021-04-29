@@ -70,9 +70,10 @@ public class ModificarpisoController{
     @FXML
     private void insertarpiso(){
         casainsert = casaselc;
-        
+
         try {
             con = ConnDAO.conectar();
+            ingreso = new IngresosDAO();
             casainsert.setN_habitaciones(Integer.parseInt(NHabitaciones.getText()));
             casainsert.setN_inquilinos(Integer.parseInt(NInquilinos.getText()));
             casainsert.setPrecio_alquiler(Integer.parseInt(alquiler.getText()));
