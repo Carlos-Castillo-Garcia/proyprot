@@ -45,8 +45,9 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <Button layoutY="482.0" mnemonicParsing="false" onAction="#switchTomenu" prefHeight="57.0" prefWidth="727.0" style="-fx-border-color: #000000;" text="volver al menu" />
+            <Button layoutY="483.0" mnemonicParsing="false" onAction="#switchTomenu" prefHeight="55.0" prefWidth="364.0" style="-fx-border-color: #000000;" text="Volver al menu" />
             <ComboBox fx:id="seleccion" onAction="#selectcasa" prefHeight="39.0" prefWidth="727.0" promptText="selecione la casa" style="-fx-border-color: #000000;" />
+            <Button layoutX="364.0" layoutY="483.0" mnemonicParsing="false" onAction="#borrar_piso" prefHeight="55.0" prefWidth="364.0" style="-fx-border-color: #000000;" text="Borrar Piso" />
          </children>
       </AnchorPane>
    </children>

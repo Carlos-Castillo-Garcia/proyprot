@@ -95,7 +95,7 @@ public class MetergastosController{
     
     @FXML
     private void selectgasto(Event event){
-       gastoselec = (Tipo_Gasto)seleccion_gasto.getSelectionModel().getSelectedItem();      
+       gastoselec = (Tipo_Gasto)seleccion_gasto.getSelectionModel().getSelectedItem();  
     }
     
     @FXML

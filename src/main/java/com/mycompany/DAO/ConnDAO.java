@@ -9,6 +9,7 @@ import com.mycompany.proyprot.App;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -19,6 +20,7 @@ import java.util.Properties;
  * @author PORTATIL 2
  */
 public class ConnDAO {
+    private static Connection conexion;
     
     public static Connection conectar() throws ClassNotFoundException, SQLException, IOException {
         Connection conexion;
@@ -47,6 +49,18 @@ public class ConnDAO {
         conexion = DriverManager.getConnection("jdbc:mariadb://" + host + ":" + port + "/" + name + "?serverTimezone=UTC",
                 username, password);
         return conexion;
+//            Properties configuration = new Properties();
+//            InputStream input = new FileInputStream(new File(App.class.getResource("conexiondb1.properties").getPath()));
+//            configuration.load(input);
+//            String host = configuration.getProperty("host");
+//            String port = configuration.getProperty("port");
+//            String name = configuration.getProperty("dbname");
+//            String username = configuration.getProperty("username");
+//            String password = configuration.getProperty("password");
+//
+//            conexion = DriverManager.getConnection("jdbc:mariadb://" + host + ":" + port + "/" + name + "?serverTimezone=UTC",
+//                    username, password);
+//            return conexion;
     }
     
     public static void desconexion (Connection conexion) throws SQLException{
