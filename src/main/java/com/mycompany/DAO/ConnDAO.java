@@ -20,7 +20,7 @@ import java.util.Properties;
  * @author PORTATIL 2
  */
 public class ConnDAO {
-    private static Connection conexion;
+//    private static Connection conexion;
     
     public static Connection conectar() throws ClassNotFoundException, SQLException, IOException {
         Connection conexion;
