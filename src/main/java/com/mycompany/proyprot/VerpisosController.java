@@ -69,6 +69,9 @@ public class VerpisosController{
        cargardatos(casaselc);
     }
     
+    /**
+     *
+     */
     public void desplegable() {
         listcasas = new InmuebleDAO();
         try {
@@ -84,6 +87,10 @@ public class VerpisosController{
         }
     }
 
+    /**
+     *
+     * @param casa
+     */
     public void cargardatos(Inmuebles casa){
         gastototal= new GastosDAO();
         ingresostotal= new IngresosDAO();

@@ -49,6 +49,9 @@ public class ModificarpisoController{
          App.setRoot("menu");
     }
     
+    /**
+     *
+     */
     public void desplegable() {
         listcasas = new InmuebleDAO();
         try {
@@ -94,6 +97,10 @@ public class ModificarpisoController{
        cargardatos(casaselc);
     }
     
+    /**
+     *
+     * @param casa
+     */
     public void cargardatos(Inmuebles casa){
         NHabitaciones.setText(String.valueOf(casa.getN_habitaciones()));
         NInquilinos.setText(String.valueOf(casa.getN_inquilinos()));

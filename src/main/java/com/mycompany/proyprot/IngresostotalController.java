@@ -47,6 +47,9 @@ public class IngresostotalController {
        cargardatos(casaselc);
     }
     
+    /**
+     *
+     */
     public void desplegable() {
         listcasas = new InmuebleDAO();
         try {
@@ -63,6 +66,10 @@ public class IngresostotalController {
         }
     }
     
+    /**
+     *
+     * @param casa
+     */
     public void cargardatos(Inmuebles casa){
         ingreso = new IngresosDAO();
         try {

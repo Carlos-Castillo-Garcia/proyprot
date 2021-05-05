@@ -21,7 +21,13 @@ import java.util.Properties;
  */
 public class ConnDAO {
     
-    
+    /**
+     * Es el metodo que te permite conectarte con la base de datos
+     * @return
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     * @throws IOException
+     */
     public static Connection conectar() throws ClassNotFoundException, SQLException, IOException {
         
         Connection conexion;
@@ -65,6 +71,11 @@ public class ConnDAO {
 //            return conexion;
     }
     
+    /**
+     * Es el metodo que te permite desconectarte con la base de datos
+     * @param conexion
+     * @throws SQLException
+     */
     public static void desconexion (Connection conexion) throws SQLException{
         conexion.close();
     }

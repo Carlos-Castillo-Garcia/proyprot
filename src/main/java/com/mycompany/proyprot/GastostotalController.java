@@ -73,6 +73,9 @@ public class GastostotalController{
        cargardatos(casaselc);
     }
     
+    /**
+     *
+     */
     public void desplegable() {
         listcasas = new InmuebleDAO();
         try {
@@ -90,6 +93,9 @@ public class GastostotalController{
         }
     }
     
+    /**
+     *
+     */
     public void cargardatostotal(){
         gastos= new GastosDAO();
         try {
@@ -109,6 +115,10 @@ public class GastostotalController{
         }
     }
 
+    /**
+     *
+     * @param casa
+     */
     public void cargardatos(Inmuebles casa){
         gastos= new GastosDAO();
         try {

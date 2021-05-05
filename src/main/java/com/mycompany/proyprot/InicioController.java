@@ -12,6 +12,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+/**
+ *
+ * @author PORTATIL 2
+ */
 public class InicioController {
     @FXML
     private TextField user;

@@ -12,6 +12,16 @@ import java.sql.SQLException;
  * @author CARLOS
  */
 public class IngresosDAO {
+
+    /**
+     *
+     * @param id
+     * @param conexion
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public int ingresocasasuma(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
         String sql = "select sum(CANTIDA_INGRESO) from ingresos where IDINMUEBLE_INGRESO=?";
@@ -25,6 +35,14 @@ public class IngresosDAO {
         return salida;
     }
     
+    /**
+     *
+     * @param casa
+     * @param conexion
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public void insert_ingresos(Inmuebles casa, Connection conexion) throws SQLException, ClassNotFoundException, IOException{
         String sql = "INSERT INTO ingresos (cantida_ingreso, idinmueble_ingreso) VALUES (?,?)";
         

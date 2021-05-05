@@ -56,6 +56,9 @@ public class MetergastosController{
          App.setRoot("menu");
     }
     
+    /**
+     *
+     */
     public void desplegablecasa() {
         listcasas = new InmuebleDAO();
         try {
@@ -77,6 +80,9 @@ public class MetergastosController{
        casaselc = (Inmuebles)seleccion.getSelectionModel().getSelectedItem();      
     }
     
+    /**
+     *
+     */
     public void desplegablegasto() {
         listgastos = new GastosDAO();
         try {

@@ -77,6 +77,11 @@ public class Users {
         return "nombre" + nombre + "\n contrasena" + contrasena + "\n email" + email;
     }
     
+    /**
+     *
+     * @param c
+     * @return
+     */
     public boolean Compcontrasena (String c){
         boolean comprobante = false;
         comprobante = c.matches(".*[A-Z].*");
@@ -86,6 +91,11 @@ public class Users {
         return comprobante;
     }
 
+    /**
+     *
+     * @param n
+     * @return
+     */
     public boolean Compnombre(String n){
         boolean comprobante = false;
         if(n.length()>= 6){
@@ -94,6 +104,11 @@ public class Users {
         return comprobante;
     }
 
+    /**
+     *
+     * @param e
+     * @return
+     */
     public boolean Compemail(String e){
         boolean comprobante = false;
         if(e.matches("[-\\w\\.]+@[a-z]+\\.[a-z]+")){

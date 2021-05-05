@@ -20,6 +20,14 @@ import java.util.ArrayList;
  */
 public class UserDAO {
     
+    /**
+     *
+     * @param user
+     * @param conexion
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public void insertar(Users user, Connection conexion) throws SQLException, ClassNotFoundException, IOException{
         String sql = "INSERT INTO casa_expres.user (username, password, email) VALUES (?,?,?)";
         
@@ -30,6 +38,12 @@ public class UserDAO {
         sentencia.executeUpdate();
     }
     
+    /**
+     *
+     * @param conexion
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Users> username(Connection conexion) throws SQLException {
         ArrayList<Users> usuarios = new ArrayList<>();
         String sql = "SELECT * FROM user";
@@ -47,6 +61,15 @@ public class UserDAO {
         }
         return usuarios;
     }    
+
+    /**
+     *
+     * @param user
+     * @param conexion
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public void borrar(Users user, Connection conexion) throws SQLException, ClassNotFoundException, IOException{
         String sql = "DELETE FROM actor WHERE nombre = ?";
         
