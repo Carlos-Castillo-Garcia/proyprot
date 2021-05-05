@@ -21,6 +21,14 @@ import java.util.List;
  */
 public class InmuebleDAO {
     
+    /**
+     * Es el metodo que te permite ingresar un nuevo inmueble en la base de datos
+     * @param casa
+     * @param conexion
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public void insert_piso(Inmuebles casa, Connection conexion) throws SQLException, ClassNotFoundException, IOException{
         String sql = "INSERT INTO casa (calle, m2, nºhabitaciones, precio_compra, precio_alquiler, fecha_compra, idusuario) VALUES (?,?,?,?,?,?,?)";
         
@@ -35,6 +43,14 @@ public class InmuebleDAO {
         sentencia.executeUpdate();
     }
     
+    /**
+     * Es el metodo que te permite consultar todos los inmuebles de la base de datos
+     * @param conexion
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public List<Inmuebles> listaInmuebles(Connection conexion) throws SQLException, ClassNotFoundException, IOException{
         List<Inmuebles> pisos = new ArrayList<>();
         String sql = "SELECT * FROM casa WHERE idusuario = ?";
@@ -59,6 +75,14 @@ public class InmuebleDAO {
         return pisos;
     }
     
+    /**
+     * Es el metodo que te permite modificar cualquier piso de la base de datos
+     * @param casa
+     * @param conexion
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public void modpiso(Inmuebles casa, Connection conexion) throws SQLException, ClassNotFoundException, IOException{
         String sql = "UPDATE casa SET nºhabitaciones = ?, nºinquilinos = ?, precio_alquiler = ? WHERE idinmueble = ?";
         
@@ -70,6 +94,14 @@ public class InmuebleDAO {
         sentencia.executeUpdate();
     }
     
+    /**
+     * Es el metodo que te permite borrar cualquier piso de la base de datos
+     * @param casa
+     * @param conexion
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public void del_piso(Inmuebles casa, Connection conexion) throws SQLException, ClassNotFoundException, IOException{
         String sql = "DELETE FROM casa WHERE idinmueble=?";
         

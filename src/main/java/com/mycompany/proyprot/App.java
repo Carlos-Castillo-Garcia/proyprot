@@ -18,8 +18,17 @@ import java.util.logging.Logger;
 public class App extends Application {
 
     private static Scene scene;
+
+    /**
+     *
+     */
     public static Users user = new Users();
 
+    /**
+     *
+     * @param stage
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("inicio"), 960, 540);
@@ -90,6 +99,7 @@ public class App extends Application {
         scene.setRoot(fxmlLoader.load());
         controller.desplegable();
     }
+    
     static void loadMeterGastoWindow() throws IOException {
         String fxml = "metergastos";
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));

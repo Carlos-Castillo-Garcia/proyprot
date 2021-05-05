@@ -56,6 +56,9 @@ public class MetergastosController{
          App.setRoot("menu");
     }
     
+    /**
+     * este es el metodo que rellena un combobox con las casas
+     */
     public void desplegablecasa() {
         listcasas = new InmuebleDAO();
         try {
@@ -72,11 +75,17 @@ public class MetergastosController{
         }
     }
     
+    /**
+     * Este es el metodo que seleccina la informacion segun se selecciona la casa
+     */
     @FXML
     private void selectcasa(Event event){
        casaselc = (Inmuebles)seleccion.getSelectionModel().getSelectedItem();      
     }
     
+    /**
+     * este es el metodo que rellena un combobox con los gastos
+     */
     public void desplegablegasto() {
         listgastos = new GastosDAO();
         try {
@@ -93,11 +102,17 @@ public class MetergastosController{
         }
     }
     
+    /**
+     * Este es el metodo que selecciona la informacion segun se selecciona el tipo de gasto
+     */
     @FXML
     private void selectgasto(Event event){
        gastoselec = (Tipo_Gasto)seleccion_gasto.getSelectionModel().getSelectedItem();  
     }
     
+    /**
+     * Este es el metodo que ingresa un gasto de la casa seleccionada
+     */
     @FXML
     private void ingresargasto(){
             listgastos = new GastosDAO();

@@ -26,44 +26,26 @@ public class Users {
         return id;
     }
 
-    /**
-     * @return the nombre
-     */
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * @return the contrasena
-     */
     public String getContrasena() {
         return contrasena;
     }
 
-    /**
-     * @return the email
-     */
     public String getEmail() {
         return email;
     }
 
-    /**
-     * @param nombre the nombre to set
-     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    /**
-     * @param contrasena the contrasena to set
-     */
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
 
-    /**
-     * @param email the email to set
-     */
     public void setEmail(String email) {
         this.email = email;
     }
@@ -77,6 +59,11 @@ public class Users {
         return "nombre" + nombre + "\n contrasena" + contrasena + "\n email" + email;
     }
     
+    /**
+     * Es el metodo que te permite comprobar la contraseña que introduce el usuario
+     * @param c
+     * @return
+     */
     public boolean Compcontrasena (String c){
         boolean comprobante = false;
         comprobante = c.matches(".*[A-Z].*");
@@ -86,6 +73,11 @@ public class Users {
         return comprobante;
     }
 
+    /**
+     * Es el metodo que te permite comprobar el nombre que introduce el usuario
+     * @param n
+     * @return
+     */
     public boolean Compnombre(String n){
         boolean comprobante = false;
         if(n.length()>= 6){
@@ -94,6 +86,11 @@ public class Users {
         return comprobante;
     }
 
+    /**
+     * Es el metodo que te permite comprobar el email que introduce el usuario
+     * @param e
+     * @return
+     */
     public boolean Compemail(String e){
         boolean comprobante = false;
         if(e.matches("[-\\w\\.]+@[a-z]+\\.[a-z]+")){

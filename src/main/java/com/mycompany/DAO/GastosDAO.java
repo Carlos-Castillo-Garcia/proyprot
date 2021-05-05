@@ -21,6 +21,14 @@ import java.util.ArrayList;
  */
 public class GastosDAO {
     
+    /**
+     * Es el metodo que te permite insertar datos en la base de datos
+     * @param gasto
+     * @param conexion
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public void insertgasto(Gastos gasto, Connection conexion) throws SQLException, ClassNotFoundException, IOException{
         String sql = "INSERT INTO gastos (NºFACTURA, PROVEEDOR, CANTIDAD, FECHA, TIPO_GASTO_ID, IDINMUEBLE_GASTO) VALUES (?,?,?,?,?,?)";
         
@@ -34,7 +42,12 @@ public class GastosDAO {
         sentencia.executeUpdate();
     }
     
-
+    /**
+     * Es el metodo que te permite seleccionar datos de la base de datos
+     * @param conexion
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Tipo_Gasto> selectgastos(Connection conexion) throws SQLException {
         ArrayList<Tipo_Gasto> tipo_gastos = new ArrayList<>();
         String sql = "SELECT * FROM tipos_gastos";
@@ -51,6 +64,15 @@ public class GastosDAO {
         return tipo_gastos;
     } 
     
+    /**
+     * Es el metodo que te permite consultar la suma de gastos de la base de datos
+     * @param id
+     * @param conexion
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public int gastocasasuma(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
         String sql = "select sum(CANTIDAD) from gastos where IDINMUEBLE_GASTO=?";
@@ -64,6 +86,14 @@ public class GastosDAO {
         return salida;
     }
     
+    /**
+     * Es el metodo que te permite consultar la suma de gastos de la base de datos
+     * @param conexion
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public int gastoaguatotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
         String sql = "call mostrartotal(?,1);";
@@ -76,6 +106,14 @@ public class GastosDAO {
         return salida;
     }
     
+    /**
+     * Es el metodo que te permite consultar la suma de gastos de agua de todas las casa
+     * @param conexion
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public int gastoluztotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
         String sql = "call mostrartotal(?,2);";
@@ -88,6 +126,14 @@ public class GastosDAO {
         return salida;
     }
     
+    /**
+     * Es el metodo que te permite consultar la suma de gastos de luz de todas las casa
+     * @param conexion
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public int gastogastotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
         String sql = "call mostrartotal(?,3);";
@@ -100,6 +146,14 @@ public class GastosDAO {
         return salida;
     }
     
+    /**
+     * Es el metodo que te permite consultar la suma de gastos del gas de todas las casa
+     * @param conexion
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public int gastoreformatotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
         String sql = "call mostrartotal(?,4);";
@@ -112,6 +166,14 @@ public class GastosDAO {
         return salida;
     }
     
+    /**
+     * Es el metodo que te permite consultar la suma de gastos de las reformas de todas las casa
+     * @param conexion
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public int gastoreparaciontotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
         String sql = "call mostrartotal(?,5);";
@@ -124,6 +186,14 @@ public class GastosDAO {
         return salida;
     }
     
+    /**
+     * Es el metodo que te permite consultar la suma de gastos de reparaciones de todas las casa
+     * @param conexion
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public int gastocomunidadtotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
         String sql = "call mostrartotal(?,6);";
@@ -136,6 +206,14 @@ public class GastosDAO {
         return salida;
     }
     
+    /**
+     * Es el metodo que te permite consultar la suma de gastos de comunidad de todas las casa
+     * @param conexion
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public int gastototaltotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
         String sql = "select sum(g.CANTIDAD) from gastos g inner join casa c on g.IDINMUEBLE_GASTO=c.IDINMUEBLE where c.IDUSUARIO=?";
@@ -148,6 +226,15 @@ public class GastosDAO {
         return salida;
     }
     
+    /**
+     * Es el metodo que te permite consultar la suma de todos los gastos de agua de una casa
+     * @param id
+     * @param conexion
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public int gastoaguacasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
         String sql = "call mostrarcasa(?,1)";
@@ -160,6 +247,15 @@ public class GastosDAO {
         return salida;
     }
     
+    /**
+     * Es el metodo que te permite consultar la suma de todos los gastos de luz de un casa 
+     * @param id
+     * @param conexion
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public int gastoluzcasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
         String sql = "call mostrarcasa(?,2)";
@@ -172,6 +268,15 @@ public class GastosDAO {
         return salida;
     }
     
+    /**
+     * Es el metodo que te permite consultar la suma de gastos los gastos de gas de una casa
+     * @param id
+     * @param conexion
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public int gastogascasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
         String sql = "call mostrarcasa(?,3)";
@@ -184,6 +289,15 @@ public class GastosDAO {
         return salida;
     }
     
+    /**
+     * Es el metodo que te permite consultar la suma de gastos de las reformas de una casa
+     * @param id
+     * @param conexion
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public int gastoreformacasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
         String sql = "call mostrarcasa(?,4)";
@@ -196,6 +310,15 @@ public class GastosDAO {
         return salida;
     }
     
+    /**
+     * Es el metodo que te permite consultar la suma de gastos de las reparaciones de una casa
+     * @param id
+     * @param conexion
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public int gastoreparacioncasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
         String sql = "call mostrarcasa(?,5)";
@@ -208,6 +331,15 @@ public class GastosDAO {
         return salida;
     }
     
+    /** 
+     * Es el metodo que te permite consultar la suma de gastos de la comunidad de una casa
+     * @param id
+     * @param conexion
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public int gastocomunidadcasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
         String sql = "call mostrarcasa(?,6)";

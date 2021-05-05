@@ -67,12 +67,18 @@ public class GastostotalController{
          App.setRoot("menu");
     }
     
+    /**
+     * Este es el metodo que recarga la informacion segun se selecciona la casa
+     */
     @FXML
     private void selectcasa(Event event){
        casaselc = (Inmuebles)seleccion.getSelectionModel().getSelectedItem();      
        cargardatos(casaselc);
     }
     
+    /**
+     * este es el metodo que rellena un combobox
+     */
     public void desplegable() {
         listcasas = new InmuebleDAO();
         try {
@@ -90,6 +96,9 @@ public class GastostotalController{
         }
     }
     
+    /**
+     * este es el metodo que carga la informacion de los totales del piso seleccionado
+     */
     public void cargardatostotal(){
         gastos= new GastosDAO();
         try {
@@ -109,6 +118,10 @@ public class GastostotalController{
         }
     }
 
+    /**
+     * este es el metodo que carga la informacion del piso seleccionado
+     * @param casa
+     */
     public void cargardatos(Inmuebles casa){
         gastos= new GastosDAO();
         try {

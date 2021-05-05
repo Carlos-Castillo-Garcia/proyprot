@@ -69,6 +69,9 @@ public class VerpisosController{
        cargardatos(casaselc);
     }
     
+    /**
+     * Este es el metodo que rellena el combobox
+     */
     public void desplegable() {
         listcasas = new InmuebleDAO();
         try {
@@ -84,6 +87,10 @@ public class VerpisosController{
         }
     }
 
+    /**
+     * Este es el metodo que carga la informacion del piso seleccionado
+     * @param casa
+     */
     public void cargardatos(Inmuebles casa){
         gastototal= new GastosDAO();
         ingresostotal= new IngresosDAO();
@@ -105,6 +112,9 @@ public class VerpisosController{
         }
     }
     
+    /**
+     * Este metodo es el que te permite borrar un piso
+     */
     @FXML
     private void borrar_piso(){
             casadel = (Inmuebles)seleccion.getSelectionModel().getSelectedItem(); 

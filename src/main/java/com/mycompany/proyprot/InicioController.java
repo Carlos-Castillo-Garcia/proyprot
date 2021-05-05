@@ -12,6 +12,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+/**
+ *
+ * @author PORTATIL 2
+ */
 public class InicioController {
     @FXML
     private TextField user;
@@ -24,7 +28,10 @@ public class InicioController {
     private void switchToregistro() throws IOException {
         App.setRoot("registros");
     }
-    
+     
+    /**
+     * Este es el metodo que compruba los datos del usuario con la base de datos para que pueda loggearse
+     */
     @FXML
     private void login() throws IOException, ClassNotFoundException{
         boolean tokenuser = false;
@@ -47,7 +54,7 @@ public class InicioController {
                 AlertaUtil.mostrarError("Los datos son erroneos");
             }
         } catch (SQLException ex) {
-            AlertaUtil.mostrarError("Inicio de sesion erroneo");
+            AlertaUtil.mostrarError("1"+ex.getMessage());
         }
         
         

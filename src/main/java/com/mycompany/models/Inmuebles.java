@@ -81,10 +81,4 @@ public class Inmuebles extends Casa {
         return calle;
     }
     
-    public String cont_desp(){
-        return calle;
-    }
-
-    
-    
 }

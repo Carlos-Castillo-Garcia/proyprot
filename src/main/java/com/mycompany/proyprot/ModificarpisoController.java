@@ -49,6 +49,9 @@ public class ModificarpisoController{
          App.setRoot("menu");
     }
     
+    /**
+     * Este es el metodo que rellena el combobox
+     */
     public void desplegable() {
         listcasas = new InmuebleDAO();
         try {
@@ -56,7 +59,6 @@ public class ModificarpisoController{
             ObservableList<Inmuebles> casas = FXCollections.observableArrayList(listcasas.listaInmuebles(con));
             seleccion.setItems(casas);
             seleccion.setValue(casas.get(0));
-            cargardatos(casas.get(0));
         } catch (ClassNotFoundException ex) {
             AlertaUtil.mostrarError("boton no relleno");
         } catch (IOException ex) {
@@ -67,6 +69,9 @@ public class ModificarpisoController{
     }
     
     
+    /**
+     * Este es el metodo que recoge toda la informacion modificada del piso seleccionado
+     */
     @FXML
     private void insertarpiso(){
         casainsert = casaselc;
@@ -89,12 +94,19 @@ public class ModificarpisoController{
         }
     }
     
+    /**
+     * Este es el metodo que recarga la informacion segun se selecciona la casa
+     */
     @FXML
     private void selectcasa(Event event){
        casaselc = (Inmuebles)seleccion.getSelectionModel().getSelectedItem();      
        cargardatos(casaselc);
     }
     
+    /**
+     * Este es el metodo que inserta la informacion del piso seleccionado en los campos a visualizar
+     * @param casa
+     */
     public void cargardatos(Inmuebles casa){
         NHabitaciones.setText(String.valueOf(casa.getN_habitaciones()));
         NInquilinos.setText(String.valueOf(casa.getN_inquilinos()));

@@ -41,12 +41,18 @@ public class IngresostotalController {
          App.setRoot("menu");
     }
     
+    /**
+     * Este es el metodo que recarga la informacion segun se selecciona la casa
+     */
     @FXML
     private void selectcasa(Event event){
        casaselc = (Inmuebles)seleccion.getSelectionModel().getSelectedItem();      
        cargardatos(casaselc);
     }
     
+    /**
+     * este es el metodo que rellena un combobox
+     */
     public void desplegable() {
         listcasas = new InmuebleDAO();
         try {
@@ -63,6 +69,10 @@ public class IngresostotalController {
         }
     }
     
+    /**
+     * este es el metodo que carga la informacion del piso seleccionado
+     * @param casa
+     */
     public void cargardatos(Inmuebles casa){
         ingreso = new IngresosDAO();
         try {

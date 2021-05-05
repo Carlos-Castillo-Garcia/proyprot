@@ -45,6 +45,10 @@ public class MeterpisoController {
     private void switchTomenu() throws IOException{
          App.setRoot("menu");
     }
+    
+    /**
+     * Este es el metodo que recoge los datos para ingresar un nuevo piso
+     */
     @FXML
     private void ingreso_piso() throws IOException, SQLException{
         inmueble = new InmuebleDAO();
