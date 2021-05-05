@@ -47,7 +47,7 @@ public class InicioController {
                 AlertaUtil.mostrarError("Los datos son erroneos");
             }
         } catch (SQLException ex) {
-            AlertaUtil.mostrarError("Inicio de sesion erroneo");
+            AlertaUtil.mostrarError("1"+ex.getMessage());
         }
         
         
