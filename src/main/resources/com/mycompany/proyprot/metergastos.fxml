@@ -38,7 +38,7 @@
                </rowConstraints>
             </GridPane>
             <Button layoutX="209.0" layoutY="452.0" mnemonicParsing="false" onAction="#switchTomenu" style="-fx-border-color: #34495E;" text="volver al menu" />
-            <ComboBox fx:id="seleccion" onAction="#selectcasa" prefHeight="39.0" prefWidth="561.0" promptText="selecione la casa" style="-fx-border-color: #000000;" />
+            <ComboBox fx:id="seleccion" onAction="#selectcasa" onMouseClicked="#selectcasa" prefHeight="39.0" prefWidth="561.0" promptText="selecione la casa" style="-fx-border-color: #000000;" />
          </children>
       </AnchorPane>
    </children>

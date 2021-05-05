@@ -20,9 +20,10 @@ import java.util.Properties;
  * @author PORTATIL 2
  */
 public class ConnDAO {
-    private static Connection conexion;
+    
     
     public static Connection conectar() throws ClassNotFoundException, SQLException, IOException {
+        
         Connection conexion;
         String host = "LocalHost";
         String port = "3306";
@@ -38,12 +39,13 @@ public class ConnDAO {
                 + "?serverTimezone=UTC",username,password);
         
         return conexion;
+//            Connection conexion;
 //            Properties configuration = new Properties();
 //            InputStream input = new FileInputStream(new File(App.class.getResource("conexiondb1.properties").getPath()));
 //            configuration.load(input);
 //            String host = configuration.getProperty("host");
 //            String port = configuration.getProperty("port");
-//            String name = configuration.getProperty("dbname");
+//            String name = configuration.getProperty("name");
 //            String username = configuration.getProperty("username");
 //            String password = configuration.getProperty("password");
 //
