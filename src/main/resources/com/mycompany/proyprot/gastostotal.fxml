@@ -87,7 +87,7 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                               </GridPane>
-                              <ComboBox fx:id="seleccion" onAction="#selectcasa" prefHeight="39.0" prefWidth="600.0" promptText="selecione la casa" />
+                              <ComboBox fx:id="seleccion" onAction="#selectcasa" onMouseClicked="#selectcasa" prefHeight="39.0" prefWidth="600.0" promptText="selecione la casa" />
                            </children>
                         </AnchorPane>
                      </content>

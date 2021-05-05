@@ -13,7 +13,7 @@
             <Label alignment="CENTER" layoutY="39.0" prefHeight="94.0" prefWidth="451.0" style="-fx-background-color: #AED6F1; -fx-border-color: #000000;" text="total de ingreso" />
             <Label fx:id="ingresomuestra" alignment="CENTER" layoutY="133.0" prefHeight="102.0" prefWidth="451.0" style="-fx-border-color: #000000; -fx-background-color: #ffffff;" />
             <Button alignment="CENTER" layoutX="163.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchTomenu" style="-fx-border-color: #34495E;" text="volver menu" />
-            <ComboBox fx:id="seleccion" onAction="#selectcasa" prefHeight="39.0" prefWidth="451.0" promptText="selecione la casa" style="-fx-border-color: #000000;" />
+            <ComboBox fx:id="seleccion" onAction="#selectcasa" onMouseClicked="#selectcasa" prefHeight="39.0" prefWidth="451.0" promptText="selecione la casa" style="-fx-border-color: #000000;" />
          </children>
       </AnchorPane>
    </children>
