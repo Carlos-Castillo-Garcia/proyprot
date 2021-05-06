@@ -5,11 +5,13 @@
  */
 package com.mycompany.models;
 
+import com.mycompany.Interfaces.Importar;
+
 /**
  *
  * @author PORTATIL 2
  */
-public abstract class Casa {
+public abstract class Casa implements Importar{
     
     private int id_casa;
     public String calle;

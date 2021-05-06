@@ -5,7 +5,15 @@
  */
 package com.mycompany.models;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,6 +36,15 @@ public class Inmuebles extends Casa {
         this.precio_alquiler = precio_alquiler;
         this.n_inquilinos = n_inquilinos;
         this.fecha_compra = fecha_compra;
+    }
+
+    private Inmuebles(String[] importcasas) {
+        super(Integer.parseInt(importcasas[0]), importcasas[1],Integer.parseInt(importcasas[2]));
+        this.n_habitaciones = Integer.parseInt(importcasas[3]);
+        this.precio_compra = Integer.parseInt(importcasas[4]);
+        this.precio_alquiler = Integer.parseInt(importcasas[5]);
+        this.n_inquilinos = Integer.parseInt(importcasas[6]);
+        this.fecha_compra = Date.valueOf(importcasas[7]);
     }
 
     public int getN_habitaciones() {
@@ -79,6 +96,58 @@ public class Inmuebles extends Casa {
 //        sb.append(", n_inquilinos=").append(n_inquilinos);
 //        sb.append(", fecha_compra=").append(fecha_compra);
         return calle;
+    }
+
+    @Override
+    public boolean comprobar() {
+            boolean compfich = false;
+            ArrayList <Inmuebles> casaimport = new ArrayList <Inmuebles>();
+            File fichero = null;
+            FileReader lector = null;
+            BufferedReader buffer = null;
+        try {
+            fichero = new File("Importcasas.txt");
+            lector = new FileReader(fichero);
+            buffer = new BufferedReader(lector);
+            String linea = null;
+            String[] importcasas;
+            while((linea = buffer.readLine()) != null){
+                    importcasas = linea.split(",");
+                    casaimport.add(new Inmuebles(importcasas));
+                }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Inmuebles.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Inmuebles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //comprobar el array list
+        return compfich;
+    }
+
+    @Override
+    public void importar() {
+        if(comprobar() != false){
+            ArrayList <Inmuebles> casaimport = new ArrayList <Inmuebles>();
+            File fichero = null;
+            FileReader lector = null;
+            BufferedReader buffer = null;
+        try {
+            fichero = new File("Importcasas.txt");
+            lector = new FileReader(fichero);
+            buffer = new BufferedReader(lector);
+            String linea = null;
+            String[] importcasas;
+            while((linea = buffer.readLine()) != null){
+                    importcasas = linea.split(",");
+                    casaimport.add(new Inmuebles(importcasas));
+                }
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Inmuebles.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Inmuebles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
     }
     
 }

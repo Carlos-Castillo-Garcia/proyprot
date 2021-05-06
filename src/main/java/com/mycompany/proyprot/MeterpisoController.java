@@ -12,8 +12,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -24,7 +22,7 @@ import javafx.scene.control.TextField;
  *
  * @author Usuario
  */
-public class MeterpisoController {   
+public class MeterpisoController{   
     @FXML
     private TextField direcion;
     @FXML
