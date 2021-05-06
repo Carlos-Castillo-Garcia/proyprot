@@ -55,7 +55,7 @@
                         <Font size="22.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="97.0" prefWidth="344.0" style="-fx-border-color: #34495E;" text="importar piso" GridPane.rowIndex="6">
+                  <Button mnemonicParsing="false" onAction="#importar_piso" prefHeight="97.0" prefWidth="344.0" style="-fx-border-color: #34495E;" text="importar piso" GridPane.rowIndex="6">
                      <font>
                         <Font size="22.0" />
                      </font>

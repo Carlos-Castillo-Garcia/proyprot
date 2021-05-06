@@ -5,26 +5,29 @@
  */
 package com.mycompany.models;
 
+import com.mycompany.DAO.ConnDAO;
+import com.mycompany.DAO.InmuebleDAO;
+import com.mycompany.proyprot.AlertaUtil;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author PORTATIL 2
- */
 public class Inmuebles extends Casa {
     private int n_habitaciones;
     private int precio_compra;
     private int precio_alquiler;
     private int n_inquilinos;
     private Date fecha_compra;
+    private static InmuebleDAO inportacion; 
+    private static Connection con;
 
     public Inmuebles() {
     }
@@ -45,6 +48,15 @@ public class Inmuebles extends Casa {
         this.precio_alquiler = Integer.parseInt(importcasas[5]);
         this.n_inquilinos = Integer.parseInt(importcasas[6]);
         this.fecha_compra = Date.valueOf(importcasas[7]);
+    }
+
+    private Inmuebles(ArrayList<Inmuebles> casaimport) {
+       super(casaimport.get(0).getId_casa(), casaimport.get(0).getCalle(),casaimport.get(0).getM_cuadrados());
+        this.n_habitaciones = casaimport.get(0).getN_habitaciones();
+        this.precio_compra = casaimport.get(0).getPrecio_compra();
+        this.precio_alquiler = casaimport.get(0).getPrecio_alquiler();
+        this.n_inquilinos = casaimport.get(0).getN_inquilinos();
+        this.fecha_compra = casaimport.get(0).getFecha_compra();
     }
 
     public int getN_habitaciones() {
@@ -116,37 +128,67 @@ public class Inmuebles extends Casa {
                     casaimport.add(new Inmuebles(importcasas));
                 }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Inmuebles.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("1. fichero no leido de comprobacion " + ex.getMessage());
         } catch (IOException ex) {
-            Logger.getLogger(Inmuebles.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("2. fichero no leido de comprobacion " + ex.getMessage());
         }
         //comprobar el array list
+        if(casaimport.size()> 0){
+            compfich = true;
+        }else{
+            compfich = false;
+        }
         return compfich;
     }
 
     @Override
     public void importar() {
-        if(comprobar() != false){
-            ArrayList <Inmuebles> casaimport = new ArrayList <Inmuebles>();
-            File fichero = null;
-            FileReader lector = null;
-            BufferedReader buffer = null;
+        inportacion = new InmuebleDAO();
         try {
-            fichero = new File("Importcasas.txt");
-            lector = new FileReader(fichero);
-            buffer = new BufferedReader(lector);
-            String linea = null;
-            String[] importcasas;
-            while((linea = buffer.readLine()) != null){
-                    importcasas = linea.split(",");
-                    casaimport.add(new Inmuebles(importcasas));
-                }
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Inmuebles.class.getName()).log(Level.SEVERE, null, ex);
+            con = ConnDAO.conectar();
+        } catch (ClassNotFoundException ex) {
+            AlertaUtil.mostrarError("1. Error de conexion " + ex.getMessage());
+        } catch (SQLException ex) {
+            AlertaUtil.mostrarError("2. Error de conexion " + ex.getMessage());
         } catch (IOException ex) {
-            Logger.getLogger(Inmuebles.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("3. Error de conexion " + ex.getMessage());
         }
+        if(comprobar() != false){
+                ArrayList <Inmuebles> casaimport = new ArrayList <Inmuebles>();
+                File fichero = null;
+                FileReader lector = null;
+                BufferedReader buffer = null;
+            try {
+                fichero = new File("Importcasas.txt");
+                lector = new FileReader(fichero);
+                buffer = new BufferedReader(lector);
+                String linea = null;
+                String[] importcasas;
+                while((linea = buffer.readLine()) != null){
+                        importcasas = linea.split(",");
+                        casaimport.add(new Inmuebles(importcasas));
+                    }
+            } catch (FileNotFoundException ex) {
+                AlertaUtil.mostrarError("1. fichero no leido " + ex.getMessage());
+            } catch (IOException ex) {
+                AlertaUtil.mostrarError("2. fichero no leido " + ex.getMessage());
+            }
+            for(Inmuebles casas : casaimport){
+                casas = new Inmuebles(casaimport);
+                    try {
+                        inportacion.insert_piso(casas, con);
+                        AlertaUtil.mostrarInfo("Importacion finalizada");
+                    } catch (SQLException ex) {
+                        AlertaUtil.mostrarError("1. Importacion fallida" + ex.getMessage());
+                    } catch (ClassNotFoundException ex) {
+                        AlertaUtil.mostrarError("2. Importacion fallida" + ex.getMessage());
+                    } catch (IOException ex) {
+                        AlertaUtil.mostrarError("3. Importacion fallida" + ex.getMessage());
+                    }
+            }
+            
+        }else{
+            
         }
     }
     

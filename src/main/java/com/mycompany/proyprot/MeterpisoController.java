@@ -75,5 +75,11 @@ public class MeterpisoController{
             ConnDAO.desconexion(con);
         }
     }
+    
+    @FXML
+    private void importar_piso() {
+        Inmuebles importacion = new Inmuebles();
+        importacion.importar();
+    }
 
 }
