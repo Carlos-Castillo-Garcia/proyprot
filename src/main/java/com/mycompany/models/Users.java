@@ -66,8 +66,7 @@ public class Users {
      */
     public boolean Compcontrasena (String c){
         boolean comprobante = false;
-        comprobante = c.matches(".*[A-Z].*");
-        if(c.length()>=8){
+        if(c.length()>=8 && c.matches(".*[A-Z].*")){
            comprobante= true;
         }
         return comprobante;
