@@ -100,7 +100,7 @@ public class Inmuebles extends Casa implements Importar {
         //comprobar el array list
         if(casaimport.length > 0){
             for(int i = 0; i < casaimport.length; i++){
-                if(casaimport[i] != null){
+                if(!casaimport[i].isBlank()){
                     cont++;
                 }
             }
