@@ -11,7 +11,7 @@ import com.mycompany.Interfaces.Importar;
  *
  * @author PORTATIL 2
  */
-public abstract class Casa implements Importar{
+public abstract class Casa{
     
     private int id_casa;
     public String calle;

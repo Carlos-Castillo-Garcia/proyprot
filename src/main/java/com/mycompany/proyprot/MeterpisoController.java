@@ -8,10 +8,16 @@ package com.mycompany.proyprot;
 import com.mycompany.DAO.ConnDAO;
 import com.mycompany.DAO.InmuebleDAO;
 import com.mycompany.models.Inmuebles;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -78,8 +84,45 @@ public class MeterpisoController{
     
     @FXML
     private void importar_piso() {
-        Inmuebles importacion = new Inmuebles();
-        importacion.importar();
+        inmueble = new InmuebleDAO();
+        try {
+                con = ConnDAO.conectar();
+            } catch (ClassNotFoundException ex) {
+                AlertaUtil.mostrarError("1. fallo en conexion" + ex.getMessage());
+            } catch (SQLException ex) {
+                AlertaUtil.mostrarError("2. fallo en conexion" + ex.getMessage());
+            } catch (IOException ex) {
+                AlertaUtil.mostrarError("3. fallo en conexion" + ex.getMessage());
+            }
+        Inmuebles temp = new Inmuebles();
+            File fichero = null;
+            FileReader lector = null;
+            BufferedReader buffer = null;
+        try {
+            fichero = new File("Importcasas");
+            lector = new FileReader(fichero);
+            buffer = new BufferedReader(lector);
+            String linea = null;
+            String[] casas;
+            while((linea = buffer.readLine()) != null){
+                    casas = linea.split(",");
+                    if(temp.comprobar(casas)){
+                        temp = new Inmuebles(casas);
+                        inmueble.insert_piso(temp, con);
+                    }else{
+                      AlertaUtil.mostrarError("1. El fichero es erroneo");
+                    }
+                }
+            AlertaUtil.mostrarInfo("Importacion Correcta(¿Importar archivos? Pues claro que me importan)");
+        } catch (FileNotFoundException ex) {
+            AlertaUtil.mostrarError("1. fichero no leido de importacion" + ex.getMessage());
+        } catch (IOException ex) {
+            AlertaUtil.mostrarError("2. fichero no leido de importacion" + ex.getMessage());
+        } catch (SQLException ex) {
+            AlertaUtil.mostrarError("3. fichero no leido de importacion" + ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            AlertaUtil.mostrarError("4. fichero no leido de importacion" + ex.getMessage());
+        }
     }
 
 }

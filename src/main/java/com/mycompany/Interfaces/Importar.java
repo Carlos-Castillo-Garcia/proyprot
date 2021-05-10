@@ -10,6 +10,5 @@ package com.mycompany.Interfaces;
  * @author PORTATIL 2
  */
 public interface Importar {
-    public boolean comprobar();
-    public void importar();
+    public boolean comprobar(String[] casaimport);
 }
