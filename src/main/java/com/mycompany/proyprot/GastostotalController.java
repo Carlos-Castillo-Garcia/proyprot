@@ -59,7 +59,7 @@ public class GastostotalController{
     private Label gtc;
     Inmuebles casaselc = new Inmuebles();
     private InmuebleDAO listcasas;
-    private GastosDAO gastos;
+private GastosDAO gastos;
     private static Connection con;
     
     @FXML
@@ -102,12 +102,12 @@ public class GastostotalController{
     public void cargardatostotal(){
         gastos= new GastosDAO();
         try {
-            gat.setText(String.valueOf(gastos.gastoaguatotal(con)));
-            glt.setText(String.valueOf(gastos.gastoluztotal(con)));
-            ggt.setText(String.valueOf(gastos.gastogastotal(con)));
-            grft.setText(String.valueOf(gastos.gastoreformatotal(con)));
-            grpt.setText(String.valueOf(gastos.gastoreparaciontotal(con)));
-            gct.setText(String.valueOf(gastos.gastocomunidadtotal(con)));
+            gat.setText(String.valueOf(gastos.gastototal(con, 1)));
+            glt.setText(String.valueOf(gastos.gastototal(con, 2)));
+            ggt.setText(String.valueOf(gastos.gastototal(con, 3)));
+            grft.setText(String.valueOf(gastos.gastototal(con, 4)));
+            grpt.setText(String.valueOf(gastos.gastototal(con, 5)));
+            gct.setText(String.valueOf(gastos.gastototal(con, 6)));
             gtt.setText(String.valueOf(gastos.gastototaltotal(con)));
         } catch (SQLException ex) {
             Logger.getLogger(GastostotalController.class.getName()).log(Level.SEVERE, null, ex);
@@ -125,12 +125,12 @@ public class GastostotalController{
     public void cargardatos(Inmuebles casa){
         gastos= new GastosDAO();
         try {
-            gac.setText(String.valueOf(gastos.gastoaguacasa(casa.getId_casa(), con)));
-            glc.setText(String.valueOf(gastos.gastoluzcasa(casa.getId_casa(), con)));
-            ggc.setText(String.valueOf(gastos.gastogascasa(casa.getId_casa(), con)));
-            grfc.setText(String.valueOf(gastos.gastoreformacasa(casa.getId_casa(), con)));
-            grpc.setText(String.valueOf(gastos.gastoreparacioncasa(casa.getId_casa(), con)));
-            gcc.setText(String.valueOf(gastos.gastocomunidadcasa(casa.getId_casa(), con)));
+            gac.setText(String.valueOf(gastos.gastocasa(casa.getId_casa(), con, 1)));
+            glc.setText(String.valueOf(gastos.gastocasa(casa.getId_casa(), con, 2)));
+            ggc.setText(String.valueOf(gastos.gastocasa(casa.getId_casa(), con, 3)));
+            grfc.setText(String.valueOf(gastos.gastocasa(casa.getId_casa(), con, 4)));
+            grpc.setText(String.valueOf(gastos.gastocasa(casa.getId_casa(), con, 5)));
+            gcc.setText(String.valueOf(gastos.gastocasa(casa.getId_casa(), con, 6)));
             gtc.setText(String.valueOf(gastos.gastocasasuma(casa.getId_casa(), con)));
         } catch (SQLException ex) {
             Logger.getLogger(GastostotalController.class.getName()).log(Level.SEVERE, null, ex);
