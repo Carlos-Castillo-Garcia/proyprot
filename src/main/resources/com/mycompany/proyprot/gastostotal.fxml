@@ -15,7 +15,7 @@
                <tabs>
                   <Tab text="total de gastos">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="464.0" prefWidth="600.0" style="-fx-background-color: ;">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="464.0" prefWidth="600.0">
                            <children>
                               <GridPane prefHeight="371.0" prefWidth="600.0">
                                  <children>
