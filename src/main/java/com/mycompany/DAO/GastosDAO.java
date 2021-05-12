@@ -94,11 +94,12 @@ public class GastosDAO {
      * @throws ClassNotFoundException
      * @throws IOException
      */
-    public int gastoaguatotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+    public int gastototal(Connection conexion, int tipo_gasto)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
-        String sql = "call mostrartotal(?,1);";
+        String sql = "call mostrartotal(?,?)";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setInt(1, App.user.getId());
+        sentencia.setInt(2, tipo_gasto);
         ResultSet resultado = sentencia.executeQuery();
         while(resultado.next()){
             salida = resultado.getInt(1);
@@ -106,114 +107,6 @@ public class GastosDAO {
         return salida;
     }
     
-    /**
-     * Es el metodo que te permite consultar la suma de gastos de agua de todas las casa
-     * @param conexion
-     * @return
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     * @throws IOException
-     */
-    public int gastoluztotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
-        int salida=0;
-        String sql = "call mostrartotal(?,2);";
-        PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setInt(1, App.user.getId());
-        ResultSet resultado = sentencia.executeQuery();
-        while(resultado.next()){
-            salida = resultado.getInt(1);
-        }
-        return salida;
-    }
-    
-    /**
-     * Es el metodo que te permite consultar la suma de gastos de luz de todas las casa
-     * @param conexion
-     * @return
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     * @throws IOException
-     */
-    public int gastogastotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
-        int salida=0;
-        String sql = "call mostrartotal(?,3);";
-        PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setInt(1, App.user.getId());
-        ResultSet resultado = sentencia.executeQuery();
-        while(resultado.next()){
-            salida = resultado.getInt(1);
-        }
-        return salida;
-    }
-    
-    /**
-     * Es el metodo que te permite consultar la suma de gastos del gas de todas las casa
-     * @param conexion
-     * @return
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     * @throws IOException
-     */
-    public int gastoreformatotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
-        int salida=0;
-        String sql = "call mostrartotal(?,4);";
-        PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setInt(1, App.user.getId());
-        ResultSet resultado = sentencia.executeQuery();
-        while(resultado.next()){
-            salida = resultado.getInt(1);
-        }
-        return salida;
-    }
-    
-    /**
-     * Es el metodo que te permite consultar la suma de gastos de las reformas de todas las casa
-     * @param conexion
-     * @return
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     * @throws IOException
-     */
-    public int gastoreparaciontotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
-        int salida=0;
-        String sql = "call mostrartotal(?,5);";
-        PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setInt(1, App.user.getId());
-        ResultSet resultado = sentencia.executeQuery();
-        while(resultado.next()){
-            salida = resultado.getInt(1);
-        }
-        return salida;
-    }
-    
-    /**
-     * Es el metodo que te permite consultar la suma de gastos de reparaciones de todas las casa
-     * @param conexion
-     * @return
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     * @throws IOException
-     */
-    public int gastocomunidadtotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
-        int salida=0;
-        String sql = "call mostrartotal(?,6);";
-        PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setInt(1, App.user.getId());
-        ResultSet resultado = sentencia.executeQuery();
-        while(resultado.next()){
-            salida = resultado.getInt(1);
-        }
-        return salida;
-    }
-    
-    /**
-     * Es el metodo que te permite consultar la suma de gastos de comunidad de todas las casa
-     * @param conexion
-     * @return
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     * @throws IOException
-     */
     public int gastototaltotal(Connection conexion)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
         String sql = "select sum(g.CANTIDAD) from gastos g inner join casa c on g.IDINMUEBLE_GASTO=c.IDINMUEBLE where c.IDUSUARIO=?";
@@ -235,116 +128,12 @@ public class GastosDAO {
      * @throws ClassNotFoundException
      * @throws IOException
      */
-    public int gastoaguacasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
+    public int gastocasa(int id,Connection conexion,int tipo_gasto)throws SQLException, ClassNotFoundException, IOException{
         int salida=0;
-        String sql = "call mostrarcasa(?,1)";
+        String sql = "call mostrarcasa(?,?)";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setInt(1, id);
-        ResultSet resultado = sentencia.executeQuery();
-        while(resultado.next()){
-            salida = resultado.getInt(1);
-        }
-        return salida;
-    }
-    
-    /**
-     * Es el metodo que te permite consultar la suma de todos los gastos de luz de un casa 
-     * @param id
-     * @param conexion
-     * @return
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     * @throws IOException
-     */
-    public int gastoluzcasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
-        int salida=0;
-        String sql = "call mostrarcasa(?,2)";
-        PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setInt(1, id);
-        ResultSet resultado = sentencia.executeQuery();
-        while(resultado.next()){
-            salida = resultado.getInt(1);
-        }
-        return salida;
-    }
-    
-    /**
-     * Es el metodo que te permite consultar la suma de gastos los gastos de gas de una casa
-     * @param id
-     * @param conexion
-     * @return
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     * @throws IOException
-     */
-    public int gastogascasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
-        int salida=0;
-        String sql = "call mostrarcasa(?,3)";
-        PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setInt(1, id);
-        ResultSet resultado = sentencia.executeQuery();
-        while(resultado.next()){
-            salida = resultado.getInt(1);
-        }
-        return salida;
-    }
-    
-    /**
-     * Es el metodo que te permite consultar la suma de gastos de las reformas de una casa
-     * @param id
-     * @param conexion
-     * @return
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     * @throws IOException
-     */
-    public int gastoreformacasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
-        int salida=0;
-        String sql = "call mostrarcasa(?,4)";
-        PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setInt(1, id);
-        ResultSet resultado = sentencia.executeQuery();
-        while(resultado.next()){
-            salida = resultado.getInt(1);
-        }
-        return salida;
-    }
-    
-    /**
-     * Es el metodo que te permite consultar la suma de gastos de las reparaciones de una casa
-     * @param id
-     * @param conexion
-     * @return
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     * @throws IOException
-     */
-    public int gastoreparacioncasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
-        int salida=0;
-        String sql = "call mostrarcasa(?,5)";
-        PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setInt(1, id);
-        ResultSet resultado = sentencia.executeQuery();
-        while(resultado.next()){
-            salida = resultado.getInt(1);
-        }
-        return salida;
-    }
-    
-    /** 
-     * Es el metodo que te permite consultar la suma de gastos de la comunidad de una casa
-     * @param id
-     * @param conexion
-     * @return
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     * @throws IOException
-     */
-    public int gastocomunidadcasa(int id,Connection conexion)throws SQLException, ClassNotFoundException, IOException{
-        int salida=0;
-        String sql = "call mostrarcasa(?,6)";
-        PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setInt(1, id);
+        sentencia.setInt(2, tipo_gasto);
         ResultSet resultado = sentencia.executeQuery();
         while(resultado.next()){
             salida = resultado.getInt(1);
