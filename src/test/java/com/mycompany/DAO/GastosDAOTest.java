@@ -26,7 +26,7 @@ public class GastosDAOTest {
     public void testSelectgastos() throws Exception {
         GastosDAO prueba = new GastosDAO();
         Connection con = ConnDAO.conectar();
-        assertEquals(6, prueba.gastocasa(1, con).size());
+        assertEquals(6, prueba.selectgastos(con).size());
     }
 
     /**
@@ -37,5 +37,54 @@ public class GastosDAOTest {
         GastosDAO prueba = new GastosDAO();
         Connection con = ConnDAO.conectar();
         assertEquals(135, prueba.gastocasasuma(1, con));
-    }    
+    }
+
+    /**
+     * Test of gastoaguacasa method, of class GastosDAO.
+     */
+    @Test
+    public void testGastoaguacasa() throws Exception {
+        
+    }
+
+    /**
+     * Test of gastoluzcasa method, of class GastosDAO.
+     */
+    @Test
+    public void testGastoluzcasa() throws Exception {
+        
+    }
+
+    /**
+     * Test of gastogascasa method, of class GastosDAO.
+     */
+    @Test
+    public void testGastogascasa() throws Exception {
+        
+    }
+
+    /**
+     * Test of gastoreformacasa method, of class GastosDAO.
+     */
+    @Test
+    public void testGastoreformacasa() throws Exception {
+        
+    }
+
+    /**
+     * Test of gastoreparacioncasa method, of class GastosDAO.
+     */
+    @Test
+    public void testGastoreparacioncasa() throws Exception {
+        
+    }
+
+    /**
+     * Test of gastocomunidadcasa method, of class GastosDAO.
+     */
+    @Test
+    public void testGastocomunidadcasa() throws Exception {
+        
+    }
+    
 }
