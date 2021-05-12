@@ -9,8 +9,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * JavaFX App
@@ -64,7 +62,7 @@ public class App extends Application {
         scene.setRoot(fxmlLoader.load());
     }
     
-    static void loadModPisoWindow() throws IOException {
+    static void loadModPisoWindow() throws IOException, SQLException {
         String fxml = "modificarpiso";
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
 
@@ -76,7 +74,7 @@ public class App extends Application {
         controller.desplegable(); 
     }
     
-    static void loadverpisoWindow() throws IOException {
+    static void loadverpisoWindow() throws IOException, SQLException {
         String fxml = "verpisos";
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
 
@@ -88,7 +86,7 @@ public class App extends Application {
         controller.desplegable();
     }
     
-    static void loadgastostotalWindow() throws IOException {
+    static void loadgastostotalWindow() throws IOException, SQLException {
         String fxml = "gastostotal";
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
 
@@ -100,7 +98,7 @@ public class App extends Application {
         controller.desplegable();
     }
     
-    static void loadMeterGastoWindow() throws IOException {
+    static void loadMeterGastoWindow() throws IOException, SQLException {
         String fxml = "metergastos";
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
 
@@ -113,7 +111,7 @@ public class App extends Application {
         controller.desplegablegasto();
     }
     
-    static void loadingresostotalWindow() throws IOException {
+    static void loadingresostotalWindow() throws IOException, SQLException {
         String fxml = "ingresostotal";
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
 

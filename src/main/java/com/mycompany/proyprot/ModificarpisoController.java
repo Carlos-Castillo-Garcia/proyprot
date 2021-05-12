@@ -12,8 +12,6 @@ import com.mycompany.models.Inmuebles;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -52,7 +50,7 @@ public class ModificarpisoController{
     /**
      * Este es el metodo que rellena el combobox
      */
-    public void desplegable() {
+    public void desplegable() throws SQLException {
         listcasas = new InmuebleDAO();
         try {
             con = ConnDAO.conectar();
@@ -60,20 +58,21 @@ public class ModificarpisoController{
             seleccion.setItems(casas);
             seleccion.setValue(casas.get(0));
         } catch (ClassNotFoundException ex) {
-            AlertaUtil.mostrarError("boton no relleno");
+            AlertaUtil.mostrarError("1. Fallo en el relleno del comboBox\n" + ex.getMessage());
         } catch (IOException ex) {
-            AlertaUtil.mostrarError("boton no relleno");
+            AlertaUtil.mostrarError("2. Fallo en el relleno del comboBox\n" + ex.getMessage());
         } catch (SQLException ex) {
-            Logger.getLogger(ModificarpisoController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("3. Fallo en el relleno del comboBox\n" + ex.getMessage());
+        }finally{
+            ConnDAO.desconexion(con);
         }
     }
-    
     
     /**
      * Este es el metodo que recoge toda la informacion modificada del piso seleccionado
      */
     @FXML
-    private void insertarpiso(){
+    private void insertarpiso() throws SQLException{
         casainsert = casaselc;
 
         try {
@@ -86,11 +85,13 @@ public class ModificarpisoController{
             ingreso.insert_ingresos(casainsert, con);
             AlertaUtil.mostrarInfo("Piso modificado e ingreso insertado");
         } catch (SQLException ex) {
-            AlertaUtil.mostrarError("Error en la sentencia sql, piso no modificado");
+            AlertaUtil.mostrarError("1. Fallo en la insercion del piso\n" + ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            AlertaUtil.mostrarError("Error mirar en la consola");
+            AlertaUtil.mostrarError("2. Fallo en la insercion del piso\n" + ex.getMessage());
         } catch (IOException ex) {
-            AlertaUtil.mostrarError("Error mirar en la consola");
+            AlertaUtil.mostrarError("3. Fallo en la insercion del piso\n" + ex.getMessage());
+        }finally{
+            ConnDAO.desconexion(con);
         }
     }
     

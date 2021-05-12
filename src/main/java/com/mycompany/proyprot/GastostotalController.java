@@ -12,8 +12,6 @@ import com.mycompany.models.Inmuebles;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -57,6 +55,7 @@ public class GastostotalController{
     private Label gcc;
     @FXML
     private Label gtc;
+    
     Inmuebles casaselc = new Inmuebles();
     private InmuebleDAO listcasas;
     private GastosDAO gastos;
@@ -73,13 +72,17 @@ public class GastostotalController{
     @FXML
     private void selectcasa(Event event){
        casaselc = (Inmuebles)seleccion.getSelectionModel().getSelectedItem();      
-       cargardatos(casaselc);
+        try {
+            cargardatos(casaselc);
+        } catch (SQLException ex) {
+            AlertaUtil.mostrarError("1. Fallo en la recarga de datos\n" + ex.getMessage());
+        }
     }
     
     /**
      * este es el metodo que rellena un combobox
      */
-    public void desplegable() {
+    public void desplegable() throws SQLException {
         listcasas = new InmuebleDAO();
         try {
             con = ConnDAO.conectar();
@@ -88,20 +91,23 @@ public class GastostotalController{
             seleccion.setValue(casas.get(0));
             cargardatostotal();
         } catch (ClassNotFoundException ex) {
-            AlertaUtil.mostrarError("boton no relleno");
+            AlertaUtil.mostrarError("1.Fallo en el relleno del ComboBox\n" + ex.getMessage());
         } catch (IOException ex) {
-            AlertaUtil.mostrarError("boton no relleno");
+            AlertaUtil.mostrarError("2.Fallo en el relleno del ComboBox\n" + ex.getMessage());
         } catch (SQLException ex) {
-            Logger.getLogger(ModificarpisoController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("3.Fallo en el relleno del ComboBox\n" + ex.getMessage());
+        }finally{
+            ConnDAO.desconexion(con);
         }
     }
     
     /**
      * este es el metodo que carga la informacion de los totales del piso seleccionado
      */
-    public void cargardatostotal(){
+    public void cargardatostotal() throws SQLException{
         gastos= new GastosDAO();
         try {
+            con = ConnDAO.conectar();
             gat.setText(String.valueOf(gastos.gastoaguatotal(con)));
             glt.setText(String.valueOf(gastos.gastoluztotal(con)));
             ggt.setText(String.valueOf(gastos.gastogastotal(con)));
@@ -110,11 +116,13 @@ public class GastostotalController{
             gct.setText(String.valueOf(gastos.gastocomunidadtotal(con)));
             gtt.setText(String.valueOf(gastos.gastototaltotal(con)));
         } catch (SQLException ex) {
-            Logger.getLogger(GastostotalController.class.getName()).log(Level.SEVERE, null, ex);
+             AlertaUtil.mostrarError("1.Fallo en la carga de datos de los label\n" + ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GastostotalController.class.getName()).log(Level.SEVERE, null, ex);
+             AlertaUtil.mostrarError("2.Fallo en la carga de datos de los label\n" + ex.getMessage());
         } catch (IOException ex) {
-            Logger.getLogger(GastostotalController.class.getName()).log(Level.SEVERE, null, ex);
+             AlertaUtil.mostrarError("3.Fallo en la carga de datos de los label\n" + ex.getMessage());
+        }finally{
+            ConnDAO.desconexion(con);
         }
     }
 
@@ -122,9 +130,10 @@ public class GastostotalController{
      * este es el metodo que carga la informacion del piso seleccionado
      * @param casa
      */
-    public void cargardatos(Inmuebles casa){
+    public void cargardatos(Inmuebles casa) throws SQLException{
         gastos= new GastosDAO();
         try {
+            con = ConnDAO.conectar();
             gac.setText(String.valueOf(gastos.gastoaguacasa(casa.getId_casa(), con)));
             glc.setText(String.valueOf(gastos.gastoluzcasa(casa.getId_casa(), con)));
             ggc.setText(String.valueOf(gastos.gastogascasa(casa.getId_casa(), con)));
@@ -133,11 +142,13 @@ public class GastostotalController{
             gcc.setText(String.valueOf(gastos.gastocomunidadcasa(casa.getId_casa(), con)));
             gtc.setText(String.valueOf(gastos.gastocasasuma(casa.getId_casa(), con)));
         } catch (SQLException ex) {
-            Logger.getLogger(GastostotalController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("1.Fallo en la carga de datos de los label\n" + ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GastostotalController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("2.Fallo en la carga de datos de los label\n" + ex.getMessage());
         } catch (IOException ex) {
-            Logger.getLogger(GastostotalController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("3.Fallo en la carga de datos de los label\n" + ex.getMessage());
+        }finally{
+            ConnDAO.desconexion(con);
         }
     }
     

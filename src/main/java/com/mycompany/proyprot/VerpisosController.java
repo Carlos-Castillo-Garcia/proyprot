@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Optional;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -66,24 +64,30 @@ public class VerpisosController{
     @FXML
     private void selectcasa(Event event){
        casaselc = (Inmuebles)seleccion.getSelectionModel().getSelectedItem();      
-       cargardatos(casaselc);
+        try {
+            cargardatos(casaselc);
+        } catch (SQLException ex) {
+            AlertaUtil.mostrarError("1. Fallo en la recarga de datos\n" + ex.getMessage());
+        }
     }
     
     /**
      * Este es el metodo que rellena el combobox
      */
-    public void desplegable() {
+    public void desplegable() throws SQLException {
         listcasas = new InmuebleDAO();
         try {
             con = ConnDAO.conectar();
             ObservableList<Inmuebles> casas = FXCollections.observableArrayList(listcasas.listaInmuebles(con));
             seleccion.setItems(casas);
         } catch (ClassNotFoundException ex) {
-            AlertaUtil.mostrarError("boton no relleno");
+           AlertaUtil.mostrarError("1.Fallo en el relleno del ComboBox\n" + ex.getMessage()); 
         } catch (IOException ex) {
-            AlertaUtil.mostrarError("boton no relleno");
+           AlertaUtil.mostrarError("2.Fallo en el relleno del ComboBox\n" + ex.getMessage());
         } catch (SQLException ex) {
-            Logger.getLogger(ModificarpisoController.class.getName()).log(Level.SEVERE, null, ex);
+           AlertaUtil.mostrarError("3.Fallo en el relleno del ComboBox\n" + ex.getMessage()); 
+        }finally{
+            ConnDAO.desconexion(con);
         }
     }
 
@@ -91,10 +95,11 @@ public class VerpisosController{
      * Este es el metodo que carga la informacion del piso seleccionado
      * @param casa
      */
-    public void cargardatos(Inmuebles casa){
+    public void cargardatos(Inmuebles casa) throws SQLException{
         gastototal= new GastosDAO();
         ingresostotal= new IngresosDAO();
         try {
+            con = ConnDAO.conectar();
             fc.setText(String.valueOf(casa.getFecha_compra()));
             mc.setText(String.valueOf(casa.getM_cuadrados()));
             nh.setText(String.valueOf(casa.getN_habitaciones()));
@@ -104,11 +109,13 @@ public class VerpisosController{
             ingresos.setText(String.valueOf(ingresostotal.ingresocasasuma(casa.getId_casa(), con)));
             beneficios.setText(String.valueOf((ingresostotal.ingresocasasuma(casa.getId_casa(), con))-(gastototal.gastocasasuma(casa.getId_casa(), con))));
         } catch (SQLException ex) {
-            Logger.getLogger(VerpisosController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("1.Fallo en la carga de datos en los label\n" + ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(VerpisosController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("2.Fallo en la carga de datos en los label\n" + ex.getMessage());
         } catch (IOException ex) {
-            Logger.getLogger(VerpisosController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("3.Fallo en la carga de datos en los label\n" + ex.getMessage());
+        }finally{
+            ConnDAO.desconexion(con);
         }
     }
     
@@ -116,13 +123,14 @@ public class VerpisosController{
      * Este metodo es el que te permite borrar un piso
      */
     @FXML
-    private void borrar_piso(){
+    private void borrar_piso() throws SQLException{
             casadel = (Inmuebles)seleccion.getSelectionModel().getSelectedItem(); 
             if (casadel == null) {
                 AlertaUtil.mostrarError("No se ha seleccionado ningun piso");
                 return;
                 }
         try {
+            con = ConnDAO.conectar();
             Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
             confirmacion.setTitle("Eliminar Ruta");
             confirmacion.setContentText("¿Estás seguro de querer eliminar este piso?");
@@ -132,11 +140,13 @@ public class VerpisosController{
             listcasas.del_piso(casaselc, con);
             desplegable();
         } catch (SQLException ex) {
-            AlertaUtil.mostrarError("Error al eliminar el piso seleccionada. " + ex.getMessage());
+            AlertaUtil.mostrarError("1. Error al eliminar el piso seleccionada\n" + ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(VerpisosController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("2. Error al eliminar el piso seleccionada\n" + ex.getMessage());
         } catch (IOException ex) {
-            Logger.getLogger(VerpisosController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("3. Error al eliminar el piso seleccionada\n" + ex.getMessage());
+        }finally{
+            ConnDAO.desconexion(con);
         }
     }
     

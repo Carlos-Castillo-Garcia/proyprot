@@ -21,13 +21,13 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 
-
 /**
  * FXML Controller class
  *
  * @author Usuario
  */
-public class MeterpisoController{   
+public class MeterpisoController {
+
     @FXML
     private TextField direcion;
     @FXML
@@ -40,78 +40,76 @@ public class MeterpisoController{
     private TextField precio_alquiler;
     @FXML
     private DatePicker fecha_compra;
-    
-    private static InmuebleDAO inmueble; 
+
+    private static InmuebleDAO inmueble;
     private static Connection con;
-    
+
     @FXML
-    private void switchTomenu() throws IOException{
-         App.setRoot("menu");
+    private void switchTomenu() throws IOException {
+        App.setRoot("menu");
     }
-    
+
     /**
      * Este es el metodo que recoge los datos para ingresar un nuevo piso
      */
     @FXML
-    private void ingreso_piso() throws IOException, SQLException{
+    private void ingreso_piso() throws SQLException {
         inmueble = new InmuebleDAO();
         Inmuebles casa = new Inmuebles();
+
         try {
-                con = ConnDAO.conectar();
-            } catch (ClassNotFoundException ex) {
-                AlertaUtil.mostrarError("Conexion erronea");
-            }
-        Date date = Date.valueOf(fecha_compra.getValue());
-        int habitaciones_value = Integer.parseInt(habitaciones.getText());
-        int metros_value = Integer.parseInt(metros.getText());
-        int precio_compra_value = Integer.parseInt(precio_compra.getText());
-        int precio_alquiler_value = Integer.parseInt(precio_alquiler.getText());
-        String direccion = direcion.getText();
-        
-        try {
-            casa = new Inmuebles(-1, direccion, metros_value,habitaciones_value, precio_compra_value, precio_alquiler_value, -1, date);
+            con = ConnDAO.conectar();
+            Date date = Date.valueOf(fecha_compra.getValue());
+            int habitaciones_value = Integer.parseInt(habitaciones.getText());
+            int metros_value = Integer.parseInt(metros.getText());
+            int precio_compra_value = Integer.parseInt(precio_compra.getText());
+            int precio_alquiler_value = Integer.parseInt(precio_alquiler.getText());
+            String direccion = direcion.getText();
+            casa = new Inmuebles(-1, direccion, metros_value, habitaciones_value, precio_compra_value, precio_alquiler_value, -1, date);
             inmueble.insert_piso(casa, con);
             AlertaUtil.mostrarInfo("Piso ingresado");
         } catch (ClassNotFoundException ex) {
-            AlertaUtil.mostrarError("Error mirar en la consola");
+            AlertaUtil.mostrarError("1. Fallo en la insercion del piso\n" + ex.getMessage());
         } catch (SQLException ex) {
-            AlertaUtil.mostrarError("Error en la sentencia sql");
-        }finally{
+            AlertaUtil.mostrarError("2. Fallo en la insercion del piso\n" + ex.getMessage());
+        } catch (IOException ex) {
+            AlertaUtil.mostrarError("3. Fallo en la insercion del piso\n" + ex.getMessage());
+        } finally {
             ConnDAO.desconexion(con);
         }
     }
-    
+
     @FXML
-    private void importar_piso() {
+    private void importar_piso() throws SQLException {
         inmueble = new InmuebleDAO();
         try {
-                con = ConnDAO.conectar();
-            } catch (ClassNotFoundException ex) {
-                AlertaUtil.mostrarError("1. fallo en conexion" + ex.getMessage());
-            } catch (SQLException ex) {
-                AlertaUtil.mostrarError("2. fallo en conexion" + ex.getMessage());
-            } catch (IOException ex) {
-                AlertaUtil.mostrarError("3. fallo en conexion" + ex.getMessage());
-            }
+            con = ConnDAO.conectar();
+        } catch (ClassNotFoundException ex) {
+            AlertaUtil.mostrarError("1. fallo en conexion" + ex.getMessage());
+        } catch (SQLException ex) {
+            AlertaUtil.mostrarError("2. fallo en conexion" + ex.getMessage());
+        } catch (IOException ex) {
+            AlertaUtil.mostrarError("3. fallo en conexion" + ex.getMessage());
+        }
         Inmuebles temp = new Inmuebles();
-            FileChooser ventana = new FileChooser();
-            ventana.setTitle("Selecciona un fichero");
-            File fichero = ventana.showOpenDialog(null);
-        if(fichero != null){
+        FileChooser ventana = new FileChooser();
+        ventana.setTitle("Selecciona un fichero");
+        File fichero = ventana.showOpenDialog(null);
+        if (fichero != null) {
             try {
                 FileReader lector = new FileReader(fichero);
-                BufferedReader  buffer = new BufferedReader(lector);
+                BufferedReader buffer = new BufferedReader(lector);
                 String linea = null;
                 String[] casas;
-                while((linea = buffer.readLine()) != null){
-                        casas = linea.split(",");
-                        if(temp.comprobar(casas)){
-                            temp = new Inmuebles(casas);
-                            inmueble.insert_piso(temp, con);
-                        }else{
-                          AlertaUtil.mostrarError("1. El fichero es erroneo, corriga el fichero");
-                        }
+                while ((linea = buffer.readLine()) != null) {
+                    casas = linea.split(",");
+                    if (temp.comprobar(casas)) {
+                        temp = new Inmuebles(casas);
+                        inmueble.insert_piso(temp, con);
+                    } else {
+                        AlertaUtil.mostrarError("1. El fichero es erroneo, corriga el fichero");
                     }
+                }
                 AlertaUtil.mostrarInfo("Importacion Correcta");
             } catch (FileNotFoundException ex) {
                 AlertaUtil.mostrarError("1. fichero no leido de importacion" + ex.getMessage());
@@ -121,6 +119,8 @@ public class MeterpisoController{
                 AlertaUtil.mostrarError("3. fichero no leido de importacion" + ex.getMessage());
             } catch (ClassNotFoundException ex) {
                 AlertaUtil.mostrarError("4. fichero no leido de importacion" + ex.getMessage());
+            } finally {
+                ConnDAO.desconexion(con);
             }
         }
     }

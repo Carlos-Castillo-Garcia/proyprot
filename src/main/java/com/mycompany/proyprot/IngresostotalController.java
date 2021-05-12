@@ -12,8 +12,6 @@ import com.mycompany.models.Inmuebles;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -47,13 +45,17 @@ public class IngresostotalController {
     @FXML
     private void selectcasa(Event event){
        casaselc = (Inmuebles)seleccion.getSelectionModel().getSelectedItem();      
-       cargardatos(casaselc);
+        try {
+            cargardatos(casaselc);
+        } catch (SQLException ex) {
+            AlertaUtil.mostrarError("1. Fallo en la recarga de datos\n" + ex.getMessage());
+        }
     }
     
     /**
      * este es el metodo que rellena un combobox
      */
-    public void desplegable() {
+    public void desplegable() throws SQLException {
         listcasas = new InmuebleDAO();
         try {
             con = ConnDAO.conectar();
@@ -61,11 +63,13 @@ public class IngresostotalController {
             seleccion.setItems(casas);
             seleccion.setValue(casas.get(0));
         } catch (ClassNotFoundException ex) {
-            AlertaUtil.mostrarError("boton no relleno");
+            AlertaUtil.mostrarError("1. Fallo al rellenar el comboBox\n" + ex.getMessage());
         } catch (IOException ex) {
-            AlertaUtil.mostrarError("boton no relleno");
+            AlertaUtil.mostrarError("2. Fallo al rellenar el comboBox\n" + ex.getMessage());
         } catch (SQLException ex) {
-            Logger.getLogger(ModificarpisoController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("3. Fallo al rellenar el comboBox\n" + ex.getMessage());
+        }finally{
+            ConnDAO.desconexion(con);
         }
     }
     
@@ -73,16 +77,19 @@ public class IngresostotalController {
      * este es el metodo que carga la informacion del piso seleccionado
      * @param casa
      */
-    public void cargardatos(Inmuebles casa){
+    public void cargardatos(Inmuebles casa) throws SQLException{
         ingreso = new IngresosDAO();
         try {
+            con = ConnDAO.conectar();
             ingresomuestra.setText(String.valueOf(ingreso.ingresocasasuma(casa.getId_casa(), con)));
         } catch (SQLException ex) {
-            Logger.getLogger(IngresostotalController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("1. Fallo al mostra los datos de los label\n" + ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(IngresostotalController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("2. Fallo al mostra los datos de los label\n" + ex.getMessage());
         } catch (IOException ex) {
-            Logger.getLogger(IngresostotalController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("3. Fallo al mostra los datos de los label\n" + ex.getMessage());
+        }finally{
+            ConnDAO.desconexion(con);
         }
     }
     

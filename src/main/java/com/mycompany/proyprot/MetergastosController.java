@@ -15,8 +15,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -30,8 +28,8 @@ import javafx.scene.control.TextField;
  *
  * @author Usuario
  */
-public class MetergastosController{
-    
+public class MetergastosController {
+
     @FXML
     private ComboBox seleccion;
     @FXML
@@ -44,7 +42,7 @@ public class MetergastosController{
     private TextField pro;
     @FXML
     private TextField pre;
-    
+
     private InmuebleDAO listcasas;
     private GastosDAO listgastos;
     private static Connection con;
@@ -52,14 +50,14 @@ public class MetergastosController{
     Tipo_Gasto gastoselec = new Tipo_Gasto();
 
     @FXML
-    private void switchTomenu() throws IOException{
-         App.setRoot("menu");
+    private void switchTomenu() throws IOException {
+        App.setRoot("menu");
     }
-    
+
     /**
      * este es el metodo que rellena un combobox con las casas
      */
-    public void desplegablecasa() {
+    public void desplegablecasa() throws SQLException {
         listcasas = new InmuebleDAO();
         try {
             con = ConnDAO.conectar();
@@ -67,26 +65,29 @@ public class MetergastosController{
             seleccion.setItems(casas);
             seleccion.setValue(casas.get(0));
         } catch (ClassNotFoundException ex) {
-            AlertaUtil.mostrarError("boton no relleno");
+            AlertaUtil.mostrarError("1. Fallo en el relleno del comboBox\n" + ex.getMessage());
         } catch (IOException ex) {
-            AlertaUtil.mostrarError("boton no relleno");
+            AlertaUtil.mostrarError("2. Fallo en el relleno del comboBox\n" + ex.getMessage());
         } catch (SQLException ex) {
-            Logger.getLogger(ModificarpisoController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("3. Fallo en el relleno del comboBox\n" + ex.getMessage());
+        } finally {
+            ConnDAO.desconexion(con);
         }
     }
-    
+
     /**
-     * Este es el metodo que seleccina la informacion segun se selecciona la casa
+     * Este es el metodo que seleccina la informacion segun se selecciona la
+     * casa
      */
     @FXML
-    private void selectcasa(Event event){
-       casaselc = (Inmuebles)seleccion.getSelectionModel().getSelectedItem();      
+    private void selectcasa(Event event) {
+        casaselc = (Inmuebles) seleccion.getSelectionModel().getSelectedItem();
     }
-    
+
     /**
      * este es el metodo que rellena un combobox con los gastos
      */
-    public void desplegablegasto() {
+    public void desplegablegasto() throws SQLException {
         listgastos = new GastosDAO();
         try {
             con = ConnDAO.conectar();
@@ -94,52 +95,56 @@ public class MetergastosController{
             seleccion_gasto.setItems(tipos_gastos);
             seleccion_gasto.setValue(tipos_gastos.get(0));
         } catch (ClassNotFoundException ex) {
-            AlertaUtil.mostrarError("boton no relleno");
+            AlertaUtil.mostrarError("1. Fallo en el rellenado del comboBox\n" + ex.getMessage());
         } catch (IOException ex) {
-            AlertaUtil.mostrarError("boton no relleno");
+            AlertaUtil.mostrarError("2. Fallo en el rellenado del comboBox\n" + ex.getMessage());
         } catch (SQLException ex) {
-            Logger.getLogger(ModificarpisoController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("3. Fallo en el rellenado del comboBox\n" + ex.getMessage());
+        } finally {
+            ConnDAO.desconexion(con);
         }
     }
-    
+
     /**
-     * Este es el metodo que selecciona la informacion segun se selecciona el tipo de gasto
+     * Este es el metodo que selecciona la informacion segun se selecciona el
+     * tipo de gasto
      */
     @FXML
-    private void selectgasto(Event event){
-       gastoselec = (Tipo_Gasto)seleccion_gasto.getSelectionModel().getSelectedItem();  
+    private void selectgasto(Event event) {
+        gastoselec = (Tipo_Gasto) seleccion_gasto.getSelectionModel().getSelectedItem();
     }
-    
+
     /**
      * Este es el metodo que ingresa un gasto de la casa seleccionada
      */
     @FXML
-    private void ingresargasto(){
-            listgastos = new GastosDAO();
-            Gastos isrtgasto = new Gastos();
+    private void ingresargasto() throws SQLException {
+        listgastos = new GastosDAO();
+        Gastos isrtgasto = new Gastos();
         try {
             con = ConnDAO.conectar();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MetergastosController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("1. Fallo en la Conexion a la base de datos\n" + ex.getMessage());
         } catch (SQLException ex) {
-            Logger.getLogger(MetergastosController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("2. Fallo en la Conexion a la base de datos\n" + ex.getMessage());
         } catch (IOException ex) {
-            Logger.getLogger(MetergastosController.class.getName()).log(Level.SEVERE, null, ex);
+            AlertaUtil.mostrarError("3. Fallo en la Conexion a la base de datos\n" + ex.getMessage());
         }
-            
-            Date date = Date.valueOf(fg.getValue());
+
+        Date date = Date.valueOf(fg.getValue());
         try {
             isrtgasto = new Gastos(Integer.parseInt(nf.getText()), pro.getText(), Integer.parseInt(pre.getText()), date, gastoselec.getId_tipo_gasto(), casaselc.getId_casa());
             listgastos.insertgasto(isrtgasto, con);
             AlertaUtil.mostrarInfo("Gasto metido");
         } catch (SQLException ex) {
-            AlertaUtil.mostrarError("Error SQL");
+            AlertaUtil.mostrarError("1. Fallo en la insercion de datos\n" + ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            AlertaUtil.mostrarError("Mirar en consola");
+            AlertaUtil.mostrarError("2. Fallo en la insercion de datos\n" + ex.getMessage());
         } catch (IOException ex) {
-            AlertaUtil.mostrarError("Mirar en consola");
+            AlertaUtil.mostrarError("3. Fallo en la insercion de datos\n" + ex.getMessage());
+        } finally {
+            ConnDAO.desconexion(con);
         }
-            
+
     }
-    
 }

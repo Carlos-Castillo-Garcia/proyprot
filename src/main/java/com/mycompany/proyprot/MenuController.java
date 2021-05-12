@@ -5,60 +5,52 @@
  */
 package com.mycompany.proyprot;
 
-import com.mycompany.models.Users;
 import java.io.IOException;
+import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-
-
 
 /**
  * FXML Controller class
  *
  * @author Usuario
  */
-public class MenuController{
-    
+public class MenuController {
+
     @FXML
     private Label labelid;
-    
+
     @FXML
     private Label labeluser;
-    
-    
-   @FXML
+
+    @FXML
     private void switchTometerpiso() throws IOException {
         App.loadMeterPisoWindow();
     }
-    
-    @FXML
-    private void switchToverpisos() throws IOException {
-        App.loadverpisoWindow();
-    }
-    
-    @FXML
-    private void switchTomodificarpiso() throws IOException {
-        App.loadModPisoWindow();
-    }
-    
-    @FXML
-    private void switchTometergastos() throws IOException {
-        App.loadMeterGastoWindow();
-    }
-    
-    @FXML
-    private void switchTogastostotal() throws IOException {
-        App.loadgastostotalWindow();
-    }
-    
-//    public void prueba() throws IOException{
-//        labelid.setText(String.valueOf(App.user.getId()));
-//        labeluser.setText(App.user.getNombre());
-//    }
 
     @FXML
-    private void switchToingresostotal() throws IOException {
+    private void switchToverpisos() throws IOException, SQLException {
+        App.loadverpisoWindow();
+    }
+
+    @FXML
+    private void switchTomodificarpiso() throws IOException, SQLException {
+        App.loadModPisoWindow();
+    }
+
+    @FXML
+    private void switchTometergastos() throws IOException, SQLException {
+        App.loadMeterGastoWindow();
+    }
+
+    @FXML
+    private void switchTogastostotal() throws IOException, SQLException {
+        App.loadgastostotalWindow();
+    }
+
+    @FXML
+    private void switchToingresostotal() throws IOException, SQLException {
         App.loadingresostotalWindow();
     }
-    
+
 }

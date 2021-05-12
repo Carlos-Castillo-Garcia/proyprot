@@ -5,9 +5,7 @@
  */
 package com.mycompany.models;
 
-import com.mycompany.DAO.InmuebleDAO;
 import com.mycompany.Interfaces.Importar;
-import java.sql.Connection;
 import java.sql.Date;
 
 public class Inmuebles extends Casa implements Importar {
@@ -16,8 +14,6 @@ public class Inmuebles extends Casa implements Importar {
     private int precio_alquiler;
     private int n_inquilinos;
     private Date fecha_compra;
-    private static InmuebleDAO inportacion; 
-    private static Connection con;
 
     public Inmuebles() {
     }
