@@ -30,7 +30,7 @@ public class GastosDAO {
      * @throws IOException
      */
     public void insertgasto(Gastos gasto, Connection conexion) throws SQLException, ClassNotFoundException, IOException{
-        String sql = "INSERT INTO gastos (NºFACTURA, PROVEEDOR, CANTIDAD, FECHA, TIPO_GASTO_ID, IDINMUEBLE_GASTO) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO gastos (N_FACTURA, PROVEEDOR, CANTIDAD, FECHA, TIPO_GASTO_ID, IDINMUEBLE_GASTO) VALUES (?,?,?,?,?,?)";
         
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setInt(1, gasto.getN_factura());

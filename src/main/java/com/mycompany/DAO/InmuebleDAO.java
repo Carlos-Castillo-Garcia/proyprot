@@ -30,7 +30,7 @@ public class InmuebleDAO {
      * @throws IOException
      */
     public void insert_piso(Inmuebles casa, Connection conexion) throws SQLException, ClassNotFoundException, IOException{
-        String sql = "INSERT INTO casa (calle, m2, nºhabitaciones, precio_compra, precio_alquiler, fecha_compra, idusuario) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO casa (calle, m2, n_habitaciones, precio_compra, precio_alquiler, fecha_compra, idusuario) VALUES (?,?,?,?,?,?,?)";
         
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setString(1, casa.getCalle());
@@ -84,7 +84,7 @@ public class InmuebleDAO {
      * @throws IOException
      */
     public void modpiso(Inmuebles casa, Connection conexion) throws SQLException, ClassNotFoundException, IOException{
-        String sql = "UPDATE casa SET nºhabitaciones = ?, nºinquilinos = ?, precio_alquiler = ? WHERE idinmueble = ?";
+        String sql = "UPDATE casa SET n_habitaciones = ?, n_inquilinos = ?, precio_alquiler = ? WHERE idinmueble = ?";
         
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setInt(1, casa.getN_habitaciones());
