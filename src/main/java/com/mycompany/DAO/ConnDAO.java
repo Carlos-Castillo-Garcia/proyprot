@@ -30,22 +30,8 @@ public class ConnDAO {
     public static Connection conectar() throws ClassNotFoundException, SQLException, IOException {
         
         Connection conexion;
-//        String host = "LocalHost";
-//        String port = "3306";
-//        String dbname = "casa_expres";
-//        String username = "root";
-//        String password = 
-//                "123456"
-////                  "Rowl3t1005"
-//                ;
-//        
-//        conexion = DriverManager.getConnection("jdbc:mariadb://"+
-//                                                host + ":" + port + "/" + dbname
-//                + "?serverTimezone=UTC",username,password);
-//        
-//        return conexion;
         Properties configuration = new Properties();
-        configuration.load(new FileInputStream(new File(App.class.getResource("connectionDB.properties").getPath())));
+        configuration.load(new FileInputStream(new File(App.class.getResource("conexiondb1.properties").getPath())));
         String host = configuration.getProperty("host");
         String port = configuration.getProperty("port");
         String name = configuration.getProperty("name");

@@ -61,8 +61,6 @@ public class InicioController {
             AlertaUtil.mostrarError("2. Fallo en el inicio de sesion\n" + ex.getMessage());
         } catch (ClassNotFoundException ex) {
             AlertaUtil.mostrarError("3. Fallo en el inicio de sesion\n" + ex.getMessage());
-            
-            
         } finally {
             ConnDAO.desconexion(con);
         }
